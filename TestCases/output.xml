@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0.1 (Python 3.9.13 on win32)" generated="20220922 12:53:10.519" rpa="false" schemaversion="3">
+<suite id="s1" name="TC1 GET Request" source="C:\Users\SatishKumar\PycharmProjects\API_Automation\TestCases\TC1_GET_Request.robot">
+<test id="s1-t1" name="Get User Info" line="11">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>mysession</arg>
+<arg>${base_url}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220922 12:53:10.780" level="INFO">Creating Session using : alias=mysession, url=https://reqres.in/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220922 12:53:10.779" endtime="20220922 12:53:10.780"/>
+</kw>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>mysession</arg>
+<arg>${relative_url}${user}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20220922 12:53:10.950" level="INFO">GET Request : url=https://reqres.in/api/users/2 
+ path_url=/api/users/2 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20220922 12:53:10.950" level="INFO">GET Response : url=https://reqres.in/api/users/2 
+ status=200, reason=OK 
+ headers={'Date': 'Thu, 22 Sep 2022 07:23:12 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"118-pbdwwFo9SKNhD3Lx5iHJyngpq00"', 'Via': '1.1 vegur', 'Cache-Control': 'max-age=14400', 'CF-Cache-Status': 'HIT', 'Age': '3902', 'Report-To': '{"endpoints":[{"url":"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=F1LZjLeW6JUs4ISau5fXxACxvph3LUlqx2WorkYLd1WlfASyNyoR1cXUn9B8Og8NGIAaiUDFXIA8DPNdn7CsDHwcTWeJoMpadWVSjBMWP8Hjn5U3jgYlZYuRnQ%3D%3D"}],"group":"cf-nel","max_age":604800}', 'NEL': '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '74e94b380f362e8e-BOM', 'Content-Encoding': 'gzip'} 
+ body={"data":{"id":2,"email":"janet.weaver@reqres.in","first_name":"Janet","last_name":"Weaver","avatar":"https://reqres.in/img/faces/2-image.jpg"},"support":{"url":"https://reqres.in/#support-heading","text":"To keep ReqRes free, contributions towards server costs are appreciated!"}} 
+ </msg>
+<msg timestamp="20220922 12:53:10.952" level="INFO">C:\Users\SatishKumar\PycharmProjects\API_Automation\venv\lib\site-packages\urllib3\connectionpool.py:1045: InsecureRequestWarning: Unverified HTTPS request is being made to host 'reqres.in'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20220922 12:53:10.953" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220922 12:53:10.781" endtime="20220922 12:53:10.953"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${status_code}</var>
+<arg>${response.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20220922 12:53:10.955" level="INFO">${status_code} = 200</msg>
+<status status="PASS" starttime="20220922 12:53:10.955" endtime="20220922 12:53:10.955"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${status_code}</arg>
+<arg>200</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20220922 12:53:10.959" endtime="20220922 12:53:10.959"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${body}</var>
+<arg>${response.content}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20220922 12:53:10.963" level="INFO">${body} = {"data":{"id":2,"email":"janet.weaver@reqres.in","first_name":"Janet","last_name":"Weaver","avatar":"https://reqres.in/img/faces/2-image.jpg"},"support":{"url":"https://reqres.in/#support-heading","te...</msg>
+<status status="PASS" starttime="20220922 12:53:10.961" endtime="20220922 12:53:10.963"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${body}</arg>
+<arg>Janet</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20220922 12:53:10.965" endtime="20220922 12:53:10.966"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${contentTypeValue}</var>
+<arg>${response.headers}</arg>
+<arg>Content-Type</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20220922 12:53:10.971" level="INFO">${contentTypeValue} = application/json; charset=utf-8</msg>
+<status status="PASS" starttime="20220922 12:53:10.968" endtime="20220922 12:53:10.972"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${contentTypeValue}</arg>
+<arg>application/json; charset=utf-8</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20220922 12:53:10.973" endtime="20220922 12:53:10.975"/>
+</kw>
+<status status="PASS" starttime="20220922 12:53:10.778" endtime="20220922 12:53:10.975"/>
+</test>
+<status status="PASS" starttime="20220922 12:53:10.523" endtime="20220922 12:53:10.981"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="TC1 GET Request">TC1 GET Request</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
