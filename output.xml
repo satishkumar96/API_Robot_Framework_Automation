@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0.1 (Python 3.9.13 on win32)" generated="20221010 18:58:24.286" rpa="false" schemaversion="3">
+<suite id="s1" name="TC2 POST Request" source="C:\Users\SatishKumar\PycharmProjects\API_Automation\TestCases\TC2_POST_Request.robot">
+<test id="s1-t1" name="Put_Customer" line="9">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>mysession</arg>
+<arg>${base_url}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20221010 18:58:24.490" level="INFO">Creating Session using : alias=mysession, url=https://reqres.in/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20221010 18:58:24.489" endtime="20221010 18:58:24.490"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${body}</var>
+<arg>name=morpheus</arg>
+<arg>job=leader</arg>
+<arg>id=948</arg>
+<arg>createdAt=2022-10-10T11:47:40.024Z</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20221010 18:58:24.492" level="INFO">${body} = {'name': 'morpheus', 'job': 'leader', 'id': '948', 'createdAt': '2022-10-10T11:47:40.024Z'}</msg>
+<status status="PASS" starttime="20221010 18:58:24.491" endtime="20221010 18:58:24.492"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${header}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20221010 18:58:24.492" level="INFO">${header} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20221010 18:58:24.492" endtime="20221010 18:58:24.492"/>
+</kw>
+<kw name="Post Request" library="RequestsLibrary">
+<var>${response}</var>
+<arg>mysession</arg>
+<arg>/api/users</arg>
+<arg>data=${body}</arg>
+<arg>headers=${header}</arg>
+<doc>*DEPRECATED* Please use `POST On Session` instead.</doc>
+<msg timestamp="20221010 18:58:24.493" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+<msg timestamp="20221010 18:58:25.288" level="INFO">POST Request : url=https://reqres.in/api/users 
+ path_url=/api/users 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '91'} 
+ body={"name": "morpheus", "job": "leader", "id": "948", "createdAt": "2022-10-10T11:47:40.024Z"} 
+ </msg>
+<msg timestamp="20221010 18:58:25.288" level="INFO">POST Response : url=https://reqres.in/api/users 
+ status=201, reason=Created 
+ headers={'Date': 'Mon, 10 Oct 2022 13:28:32 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '84', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"54-1U/2mGhZvJwznpbtgNsvBKT6prQ"', 'Via': '1.1 vegur', 'CF-Cache-Status': 'DYNAMIC', 'Report-To': '{"endpoints":[{"url":"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=%2Bkm68UCBT0H%2BHmPpNEZp6Up9r8GNAGBzJE7nszF6uHXF%2B3SLYB6lFgyuYFYC%2FCsWnuhwI%2BfTsV5N7gj3mGL5R1Cc95gqlAWulXVD0cwF6DkLQ91sPEhv4%2BWx6Q%3D%3D"}],"group":"cf-nel","max_age":604800}', 'NEL': '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}', 'Server': 'cloudflare', 'CF-RAY': '757fb31cbc978e81-DEL'} 
+ body={"name":"morpheus","job":"leader","id":"948","createdAt":"2022-10-10T13:28:31.872Z"} 
+ </msg>
+<msg timestamp="20221010 18:58:25.288" level="INFO">C:\Users\SatishKumar\PycharmProjects\API_Automation\venv\lib\site-packages\urllib3\connectionpool.py:1045: InsecureRequestWarning: Unverified HTTPS request is being made to host 'reqres.in'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20221010 18:58:25.291" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<status status="PASS" starttime="20221010 18:58:24.493" endtime="20221010 18:58:25.291"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20221010 18:58:25.292" endtime="20221010 18:58:25.295"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.content}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20221010 18:58:25.296" endtime="20221010 18:58:25.298"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${response.headers}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20221010 18:58:25.300" endtime="20221010 18:58:25.302"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${status_code}</var>
+<arg>${response.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20221010 18:58:25.305" level="INFO">${status_code} = 201</msg>
+<status status="PASS" starttime="20221010 18:58:25.305" endtime="20221010 18:58:25.305"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${status_code}</arg>
+<arg>201</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20221010 18:58:25.307" endtime="20221010 18:58:25.308"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${res_body}</var>
+<arg>${response.content}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20221010 18:58:25.311" level="INFO">${res_body} = {"name":"morpheus","job":"leader","id":"948","createdAt":"2022-10-10T13:28:31.872Z"}</msg>
+<status status="PASS" starttime="20221010 18:58:25.309" endtime="20221010 18:58:25.311"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${res_body}</arg>
+<arg>morpheus</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20221010 18:58:25.313" endtime="20221010 18:58:25.314"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${res_body}</arg>
+<arg>leader</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20221010 18:58:25.314" endtime="20221010 18:58:25.315"/>
+</kw>
+<status status="PASS" starttime="20221010 18:58:24.488" endtime="20221010 18:58:25.318"/>
+</test>
+<status status="PASS" starttime="20221010 18:58:24.289" endtime="20221010 18:58:25.320"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="TC2 POST Request">TC2 POST Request</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20221010 18:58:24.493" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+</errors>
+</robot>
