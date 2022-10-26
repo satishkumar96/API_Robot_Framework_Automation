@@ -11,9 +11,9 @@ ${user}     2
 Get User Info
     create session  mysession   ${base_url}
     ${response}=    GET On Session     mysession   ${relative_url}${user}
-#    log  ${response.status_code}
-#    log  ${response.content}
-#    log  ${response.headers}
+    log  ${response.status_code}
+    log  ${response.content}
+    log  ${response.headers}
 
 #    VALIDATION
 #   To check response code
