@@ -1,361 +1,114 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 5.0.1 (Python 3.9.13 on win32)" generated="20221026 23:05:40.781" rpa="false" schemaversion="3">
-<suite id="s1" name="TC" source="C:\Users\SatishKumar\PycharmProjects\API_Automation\VideoGameAPI\TC.robot">
-<test id="s1-t1" name="TC1:Returns all the video games(GET)" line="9">
+<robot generator="Robot 5.0.1 (Python 3.9.13 on win32)" generated="20221028 08:52:36.484" rpa="false" schemaversion="3">
+<suite id="s1" name="TC4 ComplexJSONValidation" source="C:\Users\SatishKumar\PycharmProjects\API_Automation\TestCases\TC4_ComplexJSONValidation.robot">
+<test id="s1-t1" name="Get_CountryInfo" line="11">
 <kw name="Create Session" library="RequestsLibrary">
 <arg>mysession</arg>
 <arg>${base_url}</arg>
 <doc>Create Session: create a HTTP session to a server</doc>
-<msg timestamp="20221026 23:05:40.966" level="INFO">Creating Session using : alias=mysession, url=http://localhost:8080, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<status status="PASS" starttime="20221026 23:05:40.966" endtime="20221026 23:05:40.966"/>
+<msg timestamp="20221028 08:52:36.800" level="INFO">Creating Session using : alias=mysession, url=https://restcountries.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20221028 08:52:36.800" endtime="20221028 08:52:36.800"/>
 </kw>
 <kw name="GET On Session" library="RequestsLibrary">
 <var>${response}</var>
 <arg>mysession</arg>
-<arg>/app/videogames</arg>
+<arg>/v2/alpha/in</arg>
 <doc>Sends a GET request on a previously created HTTP Session.</doc>
-<msg timestamp="20221026 23:05:40.997" level="INFO">GET Request : url=http://localhost:8080/app/videogames 
- path_url=/app/videogames 
+<msg timestamp="20221028 08:52:37.635" level="INFO">GET Request : url=https://restcountries.com/v2/alpha/in 
+ path_url=/v2/alpha/in 
  headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
  body=None 
  </msg>
-<msg timestamp="20221026 23:05:41.013" level="INFO">GET Response : url=http://localhost:8080/app/videogames 
- status=200, reason= 
- headers={'Content-Type': 'application/xml', 'Content-Length': '1862', 'Date': 'Wed, 26 Oct 2022 17:35:40 GMT'} 
- body=&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;videoGames&gt;&lt;videoGame category="Shooter" rating="Universal"&gt;&lt;id&gt;1&lt;/id&gt;&lt;name&gt;Resident Evil 4&lt;/name&gt;&lt;releaseDate&gt;2005-10-01T00:00:00+05:30&lt;/releaseDate&gt;&lt;reviewScore&gt;85&lt;/reviewScore&gt;&lt;/videoGame&gt;&lt;videoGame category="Driving" rating="Universal"&gt;&lt;id&gt;2&lt;/id&gt;&lt;name&gt;Gran Turismo 3&lt;/name&gt;&lt;releaseDate&gt;2001-03-10T00:00:00+05:30&lt;/releaseDate&gt;&lt;reviewScore&gt;91&lt;/reviewScore&gt;&lt;/videoGame&gt;&lt;videoGame category="Puzzle" rating="Universal"&gt;&lt;id&gt;3&lt;/id&gt;&lt;name&gt;Tetris&lt;/name&gt;&lt;releaseDate&gt;1984-06-25T00:00:00+05:30&lt;/releaseDate&gt;&lt;reviewScore&gt;88&lt;/reviewScore&gt;&lt;/videoGame&gt;&lt;videoGame category="Platform" rating="Universal"&gt;&lt;id&gt;4&lt;/id&gt;&lt;name&gt;Super Mario 64&lt;/name&gt;&lt;releaseDate&gt;1996-10-20T00:00:00+05:30&lt;/releaseDate&gt;&lt;reviewScore&gt;90&lt;/reviewScore&gt;&lt;/videoGame&gt;&lt;videoGame category="Adventure" rating="PG-13"&gt;&lt;id&gt;5&lt;/id&gt;&lt;name&gt;The Legend of Zelda: Ocarina of Time&lt;/name&gt;&lt;releaseDate&gt;1998-12-10T00:00:00+05:30&lt;/releaseDate&gt;&lt;reviewScore&gt;93&lt;/reviewScore&gt;&lt;/videoGame&gt;&lt;videoGame category="Shooter" rating="Mature"&gt;&lt;id&gt;6&lt;/id&gt;&lt;name&gt;Doom&lt;/name&gt;&lt;releaseDate&gt;1993-02-18T00:00:00+05:30&lt;/releaseDate&gt;&lt;reviewScore&gt;81&lt;/reviewScore&gt;&lt;/videoGame&gt;&lt;videoGame category="Puzzle" rating="Universal"&gt;&lt;id&gt;7&lt;/id&gt;&lt;name&gt;Minecraft&lt;/name&gt;&lt;releaseDate&gt;2011-12-05T00:00:00+05:30&lt;/releaseDate&gt;&lt;reviewScore&gt;77&lt;/reviewScore&gt;&lt;/videoGame&gt;&lt;videoGame category="Strategy" rating="Universal"&gt;&lt;id&gt;8&lt;/id&gt;&lt;name&gt;SimCity 2000&lt;/name&gt;&lt;releaseDate&gt;1994-09-11T00:00:00+05:30&lt;/releaseDate&gt;&lt;reviewScore&gt;88&lt;/reviewScore&gt;&lt;/videoGame&gt;&lt;videoGame category="RPG" rating="PG-13"&gt;&lt;id&gt;9&lt;/id&gt;&lt;name&gt;Final Fantasy VII&lt;/name&gt;&lt;releaseDate&gt;1997-08-20T00:00:00+05:30&lt;/releaseDate&gt;&lt;reviewScore&gt;97&lt;/reviewScore&gt;&lt;/videoGame&gt;&lt;videoGame category="Driving" rating="Mature"&gt;&lt;id&gt;10&lt;/id&gt;&lt;name&gt;Grand Theft Auto III&lt;/name&gt;&lt;releaseDate&gt;2001-04-23T00:00:00+05:30&lt;/releaseDate&gt;&lt;reviewScore&gt;90&lt;/reviewScore&gt;&lt;/videoGame&gt;&lt;/videoGames&gt; 
+<msg timestamp="20221028 08:52:37.635" level="INFO">GET Response : url=https://restcountries.com/v2/alpha/in 
+ status=200, reason=OK 
+ headers={'Date': 'Fri, 28 Oct 2022 03:22:37 GMT', 'Server': 'Apache/2.4.38 (Debian)', 'Cache-Control': 'public, immutable, max-age=31556926', 'Content-Type': 'application/json', 'content-encoding': 'gzip', 'content-length': '649', 'Keep-Alive': 'timeout=5, max=100', 'Connection': 'Keep-Alive'} 
+ body={"name":"India","topLevelDomain":[".in"],"alpha2Code":"IN","alpha3Code":"IND","callingCodes":["91"],"capital":"New Delhi","altSpellings":["IN","Bhārat","Republic of India","Bharat Ganrajya"],"subregion":"Southern Asia","region":"Asia","population":1380004385,"latlng":[20.0,77.0],"demonym":"Indian","area":3287590.0,"gini":35.7,"timezones":["UTC+05:30"],"borders":["AFG","BGD","BTN","MMR","CHN","NPL","PAK","LKA"],"nativeName":"भारत","numericCode":"356","flags":{"svg":"https://flagcdn.com/in.svg","png":"https://flagcdn.com/w320/in.png"},"currencies":[{"code":"INR","name":"Indian rupee","symbol":"₹"}],"languages":[{"iso639_1":"hi","iso639_2":"hin","name":"Hindi","nativeName":"हिन्दी"},{"iso639_1":"en","iso639_2":"eng","name":"English","nativeName":"English"}],"translations":{"br":"India","pt":"Índia","nl":"India","hr":"Indija","fa":"هند","de":"Indien","es":"India","fr":"Inde","ja":"インド","it":"India","hu":"India"},"flag":"https://flagcdn.com/in.svg","regionalBlocs":[{"acronym":"SAARC","name":"South Asian Association for Regional Cooperation"}],"cioc":"IND","independent":true} 
  </msg>
-<msg timestamp="20221026 23:05:41.013" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20221026 23:05:40.966" endtime="20221026 23:05:41.013"/>
+<msg timestamp="20221028 08:52:37.635" level="INFO">C:\Users\SatishKumar\PycharmProjects\API_Automation\venv\lib\site-packages\urllib3\connectionpool.py:1045: InsecureRequestWarning: Unverified HTTPS request is being made to host 'restcountries.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20221028 08:52:37.635" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20221028 08:52:36.800" endtime="20221028 08:52:37.635"/>
+</kw>
+<kw name="Get Value From Json" library="JSONLibrary">
+<var>${country_Name}</var>
+<arg>${response.json()}</arg>
+<arg>$.name</arg>
+<doc>Get Value From JSON using JSONPath</doc>
+<msg timestamp="20221028 08:52:37.688" level="INFO">${country_Name} = ['India']</msg>
+<status status="PASS" starttime="20221028 08:52:37.635" endtime="20221028 08:52:37.688"/>
 </kw>
 <kw name="Log To Console" library="BuiltIn">
-<arg>${response.status_code}</arg>
+<arg>${country_Name[0]}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20221026 23:05:41.013" endtime="20221026 23:05:41.013"/>
-</kw>
-<kw name="Log To Console" library="BuiltIn">
-<arg>${response.content}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20221026 23:05:41.013" endtime="20221026 23:05:41.013"/>
-</kw>
-<kw name="Convert To String" library="BuiltIn">
-<var>${status_code}</var>
-<arg>${response.status_code}</arg>
-<doc>Converts the given item to a Unicode string.</doc>
-<msg timestamp="20221026 23:05:41.029" level="INFO">${status_code} = 200</msg>
-<status status="PASS" starttime="20221026 23:05:41.029" endtime="20221026 23:05:41.029"/>
+<status status="PASS" starttime="20221028 08:52:37.688" endtime="20221028 08:52:37.688"/>
 </kw>
 <kw name="Should Be Equal" library="BuiltIn">
-<arg>${status_code}</arg>
-<arg>200</arg>
+<arg>${country_Name[0]}</arg>
+<arg>India</arg>
 <doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" starttime="20221026 23:05:41.029" endtime="20221026 23:05:41.029"/>
+<status status="PASS" starttime="20221028 08:52:37.688" endtime="20221028 08:52:37.688"/>
 </kw>
-<status status="PASS" starttime="20221026 23:05:40.966" endtime="20221026 23:05:41.029"/>
-</test>
-<test id="s1-t2" name="TC2:Add a new video game(POST)" line="19">
-<kw name="Create Session" library="RequestsLibrary">
-<arg>mysession</arg>
-<arg>${base_url}</arg>
-<doc>Create Session: create a HTTP session to a server</doc>
-<msg timestamp="20221026 23:05:41.029" level="INFO">Creating Session using : alias=mysession, url=http://localhost:8080, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<status status="PASS" starttime="20221026 23:05:41.029" endtime="20221026 23:05:41.029"/>
-</kw>
-<kw name="Create Dictionary" library="BuiltIn">
-<var>${body}</var>
-<arg>id=100</arg>
-<arg>name=Spider-Man</arg>
-<arg>releaseDate=2022-10-26T04:33:24.992Z</arg>
-<arg>reviewScore=5</arg>
-<arg>category=Thriller</arg>
-<arg>rating=Universal</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20221026 23:05:41.029" level="INFO">${body} = {'id': '100', 'name': 'Spider-Man', 'releaseDate': '2022-10-26T04:33:24.992Z', 'reviewScore': '5', 'category': 'Thriller', 'rating': 'Universal'}</msg>
-<status status="PASS" starttime="20221026 23:05:41.029" endtime="20221026 23:05:41.029"/>
-</kw>
-<kw name="Create Dictionary" library="BuiltIn">
-<var>${header}</var>
-<arg>Content-Type=application/json</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20221026 23:05:41.029" level="INFO">${header} = {'Content-Type': 'application/json'}</msg>
-<status status="PASS" starttime="20221026 23:05:41.029" endtime="20221026 23:05:41.029"/>
-</kw>
-<kw name="Post Request" library="RequestsLibrary">
-<var>${response}</var>
-<arg>mysession</arg>
-<arg>/app/videogames</arg>
-<arg>data=${body}</arg>
-<arg>headers=${header}</arg>
-<doc>*DEPRECATED* Please use `POST On Session` instead.</doc>
-<msg timestamp="20221026 23:05:41.029" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
-<msg timestamp="20221026 23:05:41.044" level="INFO">POST Request : url=http://localhost:8080/app/videogames 
- path_url=/app/videogames 
- headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '145'} 
- body={"id": "100", "name": "Spider-Man", "releaseDate": "2022-10-26T04:33:24.992Z", "reviewScore": "5", "category": "Thriller", "rating": "Universal"} 
- </msg>
-<msg timestamp="20221026 23:05:41.044" level="INFO">POST Response : url=http://localhost:8080/app/videogames 
- status=200, reason= 
- headers={'Content-Type': 'application/xml', 'Content-Length': '39', 'Date': 'Wed, 26 Oct 2022 17:35:40 GMT'} 
- body={"status": "Record Added Successfully"} 
- </msg>
-<msg timestamp="20221026 23:05:41.044" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20221026 23:05:41.029" endtime="20221026 23:05:41.044"/>
+<kw name="Get Value From Json" library="JSONLibrary">
+<var>${border}</var>
+<arg>${response.json()}</arg>
+<arg>$.borders[0]</arg>
+<doc>Get Value From JSON using JSONPath</doc>
+<msg timestamp="20221028 08:52:37.735" level="INFO">${border} = ['AFG']</msg>
+<status status="PASS" starttime="20221028 08:52:37.688" endtime="20221028 08:52:37.735"/>
 </kw>
 <kw name="Log To Console" library="BuiltIn">
-<arg>${response.status_code}</arg>
+<arg>${border[0]}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20221026 23:05:41.044" endtime="20221026 23:05:41.044"/>
-</kw>
-<kw name="Log To Console" library="BuiltIn">
-<arg>${response.content}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20221026 23:05:41.044" endtime="20221026 23:05:41.044"/>
-</kw>
-<kw name="Convert To String" library="BuiltIn">
-<var>${status_code}</var>
-<arg>${response.status_code}</arg>
-<doc>Converts the given item to a Unicode string.</doc>
-<msg timestamp="20221026 23:05:41.044" level="INFO">${status_code} = 200</msg>
-<status status="PASS" starttime="20221026 23:05:41.044" endtime="20221026 23:05:41.044"/>
+<status status="PASS" starttime="20221028 08:52:37.735" endtime="20221028 08:52:37.735"/>
 </kw>
 <kw name="Should Be Equal" library="BuiltIn">
-<arg>${status_code}</arg>
-<arg>200</arg>
+<arg>${border[0]}</arg>
+<arg>AFG</arg>
 <doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" starttime="20221026 23:05:41.044" endtime="20221026 23:05:41.060"/>
+<status status="PASS" starttime="20221028 08:52:37.735" endtime="20221028 08:52:37.735"/>
 </kw>
-<kw name="Convert To String" library="BuiltIn">
-<var>${res_body}</var>
-<arg>${response.content}</arg>
-<doc>Converts the given item to a Unicode string.</doc>
-<msg timestamp="20221026 23:05:41.060" level="INFO">${res_body} = {"status": "Record Added Successfully"}</msg>
-<status status="PASS" starttime="20221026 23:05:41.060" endtime="20221026 23:05:41.060"/>
-</kw>
-<kw name="Should Contain" library="BuiltIn">
-<arg>${res_body}</arg>
-<arg>Record Added Successfully</arg>
-<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" starttime="20221026 23:05:41.060" endtime="20221026 23:05:41.060"/>
-</kw>
-<status status="PASS" starttime="20221026 23:05:41.029" endtime="20221026 23:05:41.060"/>
-</test>
-<test id="s1-t3" name="TC3: Returns the details of a single game by ID(GET)" line="35">
-<kw name="Create Session" library="RequestsLibrary">
-<arg>mysession</arg>
-<arg>${base_url}</arg>
-<doc>Create Session: create a HTTP session to a server</doc>
-<msg timestamp="20221026 23:05:41.066" level="INFO">Creating Session using : alias=mysession, url=http://localhost:8080, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<status status="PASS" starttime="20221026 23:05:41.066" endtime="20221026 23:05:41.066"/>
-</kw>
-<kw name="GET On Session" library="RequestsLibrary">
-<var>${response}</var>
-<arg>mysession</arg>
-<arg>/app/videogames/100</arg>
-<doc>Sends a GET request on a previously created HTTP Session.</doc>
-<msg timestamp="20221026 23:05:41.066" level="INFO">GET Request : url=http://localhost:8080/app/videogames/100 
- path_url=/app/videogames/100 
- headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
- body=None 
- </msg>
-<msg timestamp="20221026 23:05:41.066" level="INFO">GET Response : url=http://localhost:8080/app/videogames/100 
- status=200, reason= 
- headers={'Content-Type': 'application/xml', 'Content-Length': '232', 'Date': 'Wed, 26 Oct 2022 17:35:40 GMT'} 
- body=&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;videoGame category="Thriller" rating="Universal"&gt;&lt;id&gt;100&lt;/id&gt;&lt;name&gt;Spider-Man&lt;/name&gt;&lt;releaseDate&gt;2022-10-26T00:00:00+05:30&lt;/releaseDate&gt;&lt;reviewScore&gt;5&lt;/reviewScore&gt;&lt;/videoGame&gt; 
- </msg>
-<msg timestamp="20221026 23:05:41.066" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20221026 23:05:41.066" endtime="20221026 23:05:41.066"/>
+<kw name="Get Value From Json" library="JSONLibrary">
+<var>${borders}</var>
+<arg>${response.json()}</arg>
+<arg>$.borders</arg>
+<doc>Get Value From JSON using JSONPath</doc>
+<msg timestamp="20221028 08:52:37.773" level="INFO">${borders} = [['AFG', 'BGD', 'BTN', 'MMR', 'CHN', 'NPL', 'PAK', 'LKA']]</msg>
+<status status="PASS" starttime="20221028 08:52:37.735" endtime="20221028 08:52:37.773"/>
 </kw>
 <kw name="Log To Console" library="BuiltIn">
-<arg>${response.status_code}</arg>
+<arg>${borders[0]}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20221026 23:05:41.066" endtime="20221026 23:05:41.066"/>
+<status status="PASS" starttime="20221028 08:52:37.773" endtime="20221028 08:52:37.773"/>
 </kw>
-<kw name="Log To Console" library="BuiltIn">
-<arg>${response.content}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20221026 23:05:41.066" endtime="20221026 23:05:41.082"/>
+<kw name="Should Contain Any" library="BuiltIn">
+<arg>${borders[0]}</arg>
+<arg>AFG</arg>
+<arg>BGD</arg>
+<arg>CHN</arg>
+<doc>Fails if ``container`` does not contain any of the ``*items``.</doc>
+<status status="PASS" starttime="20221028 08:52:37.773" endtime="20221028 08:52:37.773"/>
 </kw>
-<kw name="Convert To String" library="BuiltIn">
-<var>${status_code}</var>
-<arg>${response.status_code}</arg>
-<doc>Converts the given item to a Unicode string.</doc>
-<msg timestamp="20221026 23:05:41.082" level="INFO">${status_code} = 200</msg>
-<status status="PASS" starttime="20221026 23:05:41.082" endtime="20221026 23:05:41.082"/>
+<kw name="Should Not Contain Any" library="BuiltIn">
+<arg>${borders[0]}</arg>
+<arg>ABC</arg>
+<arg>XYZ</arg>
+<doc>Fails if ``container`` contains one or more of the ``*items``.</doc>
+<status status="PASS" starttime="20221028 08:52:37.788" endtime="20221028 08:52:37.788"/>
 </kw>
-<kw name="Should Be Equal" library="BuiltIn">
-<arg>${status_code}</arg>
-<arg>200</arg>
-<doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" starttime="20221026 23:05:41.082" endtime="20221026 23:05:41.082"/>
-</kw>
-<kw name="Convert To String" library="BuiltIn">
-<var>${res_body}</var>
-<arg>${response.content}</arg>
-<doc>Converts the given item to a Unicode string.</doc>
-<msg timestamp="20221026 23:05:41.082" level="INFO">${res_body} = &lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;videoGame category="Thriller" rating="Universal"&gt;&lt;id&gt;100&lt;/id&gt;&lt;name&gt;Spider-Man&lt;/name&gt;&lt;releaseDate&gt;2022-10-26T00:00:00+05:30&lt;/releaseDate&gt;&lt;reviewS...</msg>
-<status status="PASS" starttime="20221026 23:05:41.082" endtime="20221026 23:05:41.082"/>
-</kw>
-<kw name="Should Contain" library="BuiltIn">
-<arg>${res_body}</arg>
-<arg>Spider-Man</arg>
-<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" starttime="20221026 23:05:41.082" endtime="20221026 23:05:41.082"/>
-</kw>
-<status status="PASS" starttime="20221026 23:05:41.060" endtime="20221026 23:05:41.082"/>
+<status status="PASS" starttime="20221028 08:52:36.800" endtime="20221028 08:52:37.788"/>
 </test>
-<test id="s1-t4" name="TC4:Update an existing video game by specifying a new body (PUT)" line="48">
-<kw name="Create Session" library="RequestsLibrary">
-<arg>mysession</arg>
-<arg>${base_url}</arg>
-<doc>Create Session: create a HTTP session to a server</doc>
-<msg timestamp="20221026 23:05:41.082" level="INFO">Creating Session using : alias=mysession, url=http://localhost:8080, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<status status="PASS" starttime="20221026 23:05:41.082" endtime="20221026 23:05:41.082"/>
-</kw>
-<kw name="Create Dictionary" library="BuiltIn">
-<var>${body}</var>
-<arg>id=100</arg>
-<arg>name=Pacman</arg>
-<arg>releaseDate=2022-10-26T04:33:24.992Z</arg>
-<arg>reviewScore=5</arg>
-<arg>category=Thriller</arg>
-<arg>rating=Universal</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20221026 23:05:41.082" level="INFO">${body} = {'id': '100', 'name': 'Pacman', 'releaseDate': '2022-10-26T04:33:24.992Z', 'reviewScore': '5', 'category': 'Thriller', 'rating': 'Universal'}</msg>
-<status status="PASS" starttime="20221026 23:05:41.082" endtime="20221026 23:05:41.082"/>
-</kw>
-<kw name="Create Dictionary" library="BuiltIn">
-<var>${header}</var>
-<arg>Content-Type=application/json</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20221026 23:05:41.082" level="INFO">${header} = {'Content-Type': 'application/json'}</msg>
-<status status="PASS" starttime="20221026 23:05:41.082" endtime="20221026 23:05:41.082"/>
-</kw>
-<kw name="Put Request" library="RequestsLibrary">
-<var>${response}</var>
-<arg>mysession</arg>
-<arg>/app/videogames/100</arg>
-<arg>data=${body}</arg>
-<arg>headers=${header}</arg>
-<doc>*DEPRECATED* Please use `PUT On Session` instead.</doc>
-<msg timestamp="20221026 23:05:41.082" level="WARN">Keyword 'RequestsLibrary.Put Request' is deprecated. Please use `PUT On Session` instead.</msg>
-<msg timestamp="20221026 23:05:41.098" level="INFO">PUT Request : url=http://localhost:8080/app/videogames/100 
- path_url=/app/videogames/100 
- headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '141'} 
- body={"id": "100", "name": "Pacman", "releaseDate": "2022-10-26T04:33:24.992Z", "reviewScore": "5", "category": "Thriller", "rating": "Universal"} 
- </msg>
-<msg timestamp="20221026 23:05:41.113" level="INFO">PUT Response : url=http://localhost:8080/app/videogames/100 
- status=200, reason= 
- headers={'Content-Type': 'application/xml', 'Content-Length': '228', 'Date': 'Wed, 26 Oct 2022 17:35:40 GMT'} 
- body=&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;videoGame category="Thriller" rating="Universal"&gt;&lt;id&gt;100&lt;/id&gt;&lt;name&gt;Pacman&lt;/name&gt;&lt;releaseDate&gt;2022-10-26T00:00:00+05:30&lt;/releaseDate&gt;&lt;reviewScore&gt;5&lt;/reviewScore&gt;&lt;/videoGame&gt; 
- </msg>
-<msg timestamp="20221026 23:05:41.113" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20221026 23:05:41.082" endtime="20221026 23:05:41.113"/>
-</kw>
-<kw name="Log To Console" library="BuiltIn">
-<arg>${response.status_code}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20221026 23:05:41.113" endtime="20221026 23:05:41.113"/>
-</kw>
-<kw name="Log To Console" library="BuiltIn">
-<arg>${response.content}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20221026 23:05:41.113" endtime="20221026 23:05:41.113"/>
-</kw>
-<kw name="Convert To String" library="BuiltIn">
-<var>${status_code}</var>
-<arg>${response.status_code}</arg>
-<doc>Converts the given item to a Unicode string.</doc>
-<msg timestamp="20221026 23:05:41.113" level="INFO">${status_code} = 200</msg>
-<status status="PASS" starttime="20221026 23:05:41.113" endtime="20221026 23:05:41.113"/>
-</kw>
-<kw name="Should Be Equal" library="BuiltIn">
-<arg>${status_code}</arg>
-<arg>200</arg>
-<doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" starttime="20221026 23:05:41.113" endtime="20221026 23:05:41.113"/>
-</kw>
-<kw name="Convert To String" library="BuiltIn">
-<var>${res_body}</var>
-<arg>${response.content}</arg>
-<doc>Converts the given item to a Unicode string.</doc>
-<msg timestamp="20221026 23:05:41.129" level="INFO">${res_body} = &lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;&lt;videoGame category="Thriller" rating="Universal"&gt;&lt;id&gt;100&lt;/id&gt;&lt;name&gt;Pacman&lt;/name&gt;&lt;releaseDate&gt;2022-10-26T00:00:00+05:30&lt;/releaseDate&gt;&lt;reviewScore...</msg>
-<status status="PASS" starttime="20221026 23:05:41.113" endtime="20221026 23:05:41.129"/>
-</kw>
-<kw name="Should Contain" library="BuiltIn">
-<arg>${res_body}</arg>
-<arg>Pacman</arg>
-<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" starttime="20221026 23:05:41.129" endtime="20221026 23:05:41.129"/>
-</kw>
-<status status="PASS" starttime="20221026 23:05:41.082" endtime="20221026 23:05:41.129"/>
-</test>
-<test id="s1-t5" name="TC5:Deletes a video game by ID (DELETE)" line="64">
-<kw name="Create Session" library="RequestsLibrary">
-<arg>mysession</arg>
-<arg>${base_url}</arg>
-<doc>Create Session: create a HTTP session to a server</doc>
-<msg timestamp="20221026 23:05:41.129" level="INFO">Creating Session using : alias=mysession, url=http://localhost:8080, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<status status="PASS" starttime="20221026 23:05:41.129" endtime="20221026 23:05:41.129"/>
-</kw>
-<kw name="DELETE On Session" library="RequestsLibrary">
-<var>${response}</var>
-<arg>mysession</arg>
-<arg>app/videogames/100</arg>
-<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
-<msg timestamp="20221026 23:05:41.129" level="INFO">DELETE Request : url=http://localhost:8080/app/videogames/100 
- path_url=/app/videogames/100 
- headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
- body=None 
- </msg>
-<msg timestamp="20221026 23:05:41.129" level="INFO">DELETE Response : url=http://localhost:8080/app/videogames/100 
- status=200, reason= 
- headers={'Content-Type': 'application/xml', 'Content-Length': '41', 'Date': 'Wed, 26 Oct 2022 17:35:40 GMT'} 
- body={"status": "Record Deleted Successfully"} 
- </msg>
-<msg timestamp="20221026 23:05:41.129" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20221026 23:05:41.129" endtime="20221026 23:05:41.129"/>
-</kw>
-<kw name="Convert To String" library="BuiltIn">
-<var>${status_code}</var>
-<arg>${response.status_code}</arg>
-<doc>Converts the given item to a Unicode string.</doc>
-<msg timestamp="20221026 23:05:41.145" level="INFO">${status_code} = 200</msg>
-<status status="PASS" starttime="20221026 23:05:41.129" endtime="20221026 23:05:41.145"/>
-</kw>
-<kw name="Should Be Equal" library="BuiltIn">
-<arg>${status_code}</arg>
-<arg>200</arg>
-<doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" starttime="20221026 23:05:41.145" endtime="20221026 23:05:41.145"/>
-</kw>
-<kw name="Convert To String" library="BuiltIn">
-<var>${res_body}</var>
-<arg>${response.content}</arg>
-<doc>Converts the given item to a Unicode string.</doc>
-<msg timestamp="20221026 23:05:41.145" level="INFO">${res_body} = {"status": "Record Deleted Successfully"}</msg>
-<status status="PASS" starttime="20221026 23:05:41.145" endtime="20221026 23:05:41.145"/>
-</kw>
-<kw name="Should Contain" library="BuiltIn">
-<arg>${res_body}</arg>
-<arg>Record Deleted Successfully</arg>
-<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" starttime="20221026 23:05:41.145" endtime="20221026 23:05:41.145"/>
-</kw>
-<status status="PASS" starttime="20221026 23:05:41.129" endtime="20221026 23:05:41.145"/>
-</test>
-<status status="PASS" starttime="20221026 23:05:40.781" endtime="20221026 23:05:41.145"/>
+<status status="PASS" starttime="20221028 08:52:36.484" endtime="20221028 08:52:37.788"/>
 </suite>
 <statistics>
 <total>
-<stat pass="5" fail="0" skip="0">All Tests</stat>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat pass="5" fail="0" skip="0" id="s1" name="TC">TC</stat>
+<stat pass="1" fail="0" skip="0" id="s1" name="TC4 ComplexJSONValidation">TC4 ComplexJSONValidation</stat>
 </suite>
 </statistics>
 <errors>
-<msg timestamp="20221026 23:05:41.029" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
-<msg timestamp="20221026 23:05:41.082" level="WARN">Keyword 'RequestsLibrary.Put Request' is deprecated. Please use `PUT On Session` instead.</msg>
 </errors>
 </robot>
