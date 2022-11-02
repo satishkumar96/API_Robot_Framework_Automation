@@ -1,103 +1,145 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 5.0.1 (Python 3.9.13 on win32)" generated="20221028 08:52:36.484" rpa="false" schemaversion="3">
-<suite id="s1" name="TC4 ComplexJSONValidation" source="C:\Users\SatishKumar\PycharmProjects\API_Automation\TestCases\TC4_ComplexJSONValidation.robot">
-<test id="s1-t1" name="Get_CountryInfo" line="11">
+<robot generator="Robot 5.0.1 (Python 3.9.13 on win32)" generated="20221031 14:00:27.650" rpa="false" schemaversion="3">
+<suite id="s1" name="TC6 XMLResponse" source="C:\Users\SatishKumar\PycharmProjects\API_Automation\TestCases\TC6_XMLResponse.robot">
+<test id="s1-t1" name="TestCase1" line="11">
 <kw name="Create Session" library="RequestsLibrary">
 <arg>mysession</arg>
 <arg>${base_url}</arg>
 <doc>Create Session: create a HTTP session to a server</doc>
-<msg timestamp="20221028 08:52:36.800" level="INFO">Creating Session using : alias=mysession, url=https://restcountries.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<status status="PASS" starttime="20221028 08:52:36.800" endtime="20221028 08:52:36.800"/>
+<msg timestamp="20221031 14:00:27.932" level="INFO">Creating Session using : alias=mysession, url=http://thomas-bayer.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20221031 14:00:27.931" endtime="20221031 14:00:27.933"/>
 </kw>
 <kw name="GET On Session" library="RequestsLibrary">
 <var>${response}</var>
 <arg>mysession</arg>
-<arg>/v2/alpha/in</arg>
+<arg>/sqlrest/CUSTOMER/15</arg>
 <doc>Sends a GET request on a previously created HTTP Session.</doc>
-<msg timestamp="20221028 08:52:37.635" level="INFO">GET Request : url=https://restcountries.com/v2/alpha/in 
- path_url=/v2/alpha/in 
+<msg timestamp="20221031 14:00:28.370" level="INFO">GET Request : url=http://thomas-bayer.com/sqlrest/CUSTOMER/15 
+ path_url=/sqlrest/CUSTOMER/15 
  headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
  body=None 
  </msg>
-<msg timestamp="20221028 08:52:37.635" level="INFO">GET Response : url=https://restcountries.com/v2/alpha/in 
+<msg timestamp="20221031 14:00:28.375" level="INFO">GET Response : url=http://thomas-bayer.com/sqlrest/CUSTOMER/15 
  status=200, reason=OK 
- headers={'Date': 'Fri, 28 Oct 2022 03:22:37 GMT', 'Server': 'Apache/2.4.38 (Debian)', 'Cache-Control': 'public, immutable, max-age=31556926', 'Content-Type': 'application/json', 'content-encoding': 'gzip', 'content-length': '649', 'Keep-Alive': 'timeout=5, max=100', 'Connection': 'Keep-Alive'} 
- body={"name":"India","topLevelDomain":[".in"],"alpha2Code":"IN","alpha3Code":"IND","callingCodes":["91"],"capital":"New Delhi","altSpellings":["IN","Bhārat","Republic of India","Bharat Ganrajya"],"subregion":"Southern Asia","region":"Asia","population":1380004385,"latlng":[20.0,77.0],"demonym":"Indian","area":3287590.0,"gini":35.7,"timezones":["UTC+05:30"],"borders":["AFG","BGD","BTN","MMR","CHN","NPL","PAK","LKA"],"nativeName":"भारत","numericCode":"356","flags":{"svg":"https://flagcdn.com/in.svg","png":"https://flagcdn.com/w320/in.png"},"currencies":[{"code":"INR","name":"Indian rupee","symbol":"₹"}],"languages":[{"iso639_1":"hi","iso639_2":"hin","name":"Hindi","nativeName":"हिन्दी"},{"iso639_1":"en","iso639_2":"eng","name":"English","nativeName":"English"}],"translations":{"br":"India","pt":"Índia","nl":"India","hr":"Indija","fa":"هند","de":"Indien","es":"India","fr":"Inde","ja":"インド","it":"India","hu":"India"},"flag":"https://flagcdn.com/in.svg","regionalBlocs":[{"acronym":"SAARC","name":"South Asian Association for Regional Cooperation"}],"cioc":"IND","independent":true} 
+ headers={'Server': 'Apache-Coyote/1.1', 'Content-Type': 'application/xml', 'Date': 'Mon, 31 Oct 2022 08:30:17 GMT', 'Content-Length': '227'} 
+ body=&lt;?xml version="1.0"?&gt;&lt;CUSTOMER xmlns:xlink="http://www.w3.org/1999/xlink"&gt;
+    &lt;ID&gt;15&lt;/ID&gt;
+    &lt;FIRSTNAME&gt;Bill&lt;/FIRSTNAME&gt;
+    &lt;LASTNAME&gt;Clancy&lt;/LASTNAME&gt;
+    &lt;STREET&gt;319 Upland Pl.&lt;/STREET&gt;
+    &lt;CITY&gt;Seattle&lt;/CITY&gt;
+&lt;/CUSTOMER&gt; 
  </msg>
-<msg timestamp="20221028 08:52:37.635" level="INFO">C:\Users\SatishKumar\PycharmProjects\API_Automation\venv\lib\site-packages\urllib3\connectionpool.py:1045: InsecureRequestWarning: Unverified HTTPS request is being made to host 'restcountries.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
-  warnings.warn(</msg>
-<msg timestamp="20221028 08:52:37.635" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20221028 08:52:36.800" endtime="20221028 08:52:37.635"/>
+<msg timestamp="20221031 14:00:28.376" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20221031 14:00:27.934" endtime="20221031 14:00:28.376"/>
 </kw>
-<kw name="Get Value From Json" library="JSONLibrary">
-<var>${country_Name}</var>
-<arg>${response.json()}</arg>
-<arg>$.name</arg>
-<doc>Get Value From JSON using JSONPath</doc>
-<msg timestamp="20221028 08:52:37.688" level="INFO">${country_Name} = ['India']</msg>
-<status status="PASS" starttime="20221028 08:52:37.635" endtime="20221028 08:52:37.688"/>
+<kw name="Convert To String" library="BuiltIn">
+<var>${xml_string}</var>
+<arg>${response.content}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20221031 14:00:28.378" level="INFO">${xml_string} = &lt;?xml version="1.0"?&gt;&lt;CUSTOMER xmlns:xlink="http://www.w3.org/1999/xlink"&gt;
+    &lt;ID&gt;15&lt;/ID&gt;
+    &lt;FIRSTNAME&gt;Bill&lt;/FIRSTNAME&gt;
+    &lt;LASTNAME&gt;Clancy&lt;/LASTNAME&gt;
+    &lt;STREET&gt;319 Upland Pl.&lt;/STREET&gt;
+    &lt;CITY...</msg>
+<status status="PASS" starttime="20221031 14:00:28.377" endtime="20221031 14:00:28.378"/>
 </kw>
-<kw name="Log To Console" library="BuiltIn">
-<arg>${country_Name[0]}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20221028 08:52:37.688" endtime="20221028 08:52:37.688"/>
+<kw name="Parse Xml" library="XML">
+<var>${xml_obj}</var>
+<arg>${xml_string}</arg>
+<doc>Parses the given XML file or string into an element structure.</doc>
+<msg timestamp="20221031 14:00:28.379" level="INFO">${xml_obj} = &lt;Element 'CUSTOMER' at 0x000002425FFC8C70&gt;</msg>
+<status status="PASS" starttime="20221031 14:00:28.378" endtime="20221031 14:00:28.379"/>
+</kw>
+<kw name="Element Text Should Be" library="XML">
+<arg>${xml_obj}</arg>
+<arg>15</arg>
+<arg>.//ID</arg>
+<doc>Verifies that the text of the specified element is ``expected``.</doc>
+<status status="PASS" starttime="20221031 14:00:28.380" endtime="20221031 14:00:28.380"/>
+</kw>
+<kw name="Get Child Elements" library="XML">
+<var>${child_elements}</var>
+<arg>${xml_obj}</arg>
+<doc>Returns the child elements of the specified element as a list.</doc>
+<msg timestamp="20221031 14:00:28.381" level="INFO">${child_elements} = [&lt;Element 'ID' at 0x000002425FFC8EF0&gt;, &lt;Element 'FIRSTNAME' at 0x000002425FFC8F90&gt;, &lt;Element 'LASTNAME' at 0x000002425FFC8F40&gt;, &lt;Element 'STREET' at 0x000002425FFD3040&gt;, &lt;Element 'CITY' at 0x000002425...</msg>
+<status status="PASS" starttime="20221031 14:00:28.381" endtime="20221031 14:00:28.381"/>
+</kw>
+<kw name="Should Not Be Empty" library="BuiltIn">
+<arg>${child_elements}</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<msg timestamp="20221031 14:00:28.383" level="INFO">Length is 5</msg>
+<status status="PASS" starttime="20221031 14:00:28.382" endtime="20221031 14:00:28.383"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${id}</var>
+<arg>${child_elements[0]}</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20221031 14:00:28.386" level="INFO">${id} = 15</msg>
+<status status="PASS" starttime="20221031 14:00:28.384" endtime="20221031 14:00:28.386"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${fname}</var>
+<arg>${child_elements[1]}</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20221031 14:00:28.388" level="INFO">${fname} = Bill</msg>
+<status status="PASS" starttime="20221031 14:00:28.387" endtime="20221031 14:00:28.388"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${lname}</var>
+<arg>${child_elements[2]}</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20221031 14:00:28.390" level="INFO">${lname} = Clancy</msg>
+<status status="PASS" starttime="20221031 14:00:28.389" endtime="20221031 14:00:28.390"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${street}</var>
+<arg>${child_elements[3]}</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20221031 14:00:28.392" level="INFO">${street} = 319 Upland Pl.</msg>
+<status status="PASS" starttime="20221031 14:00:28.391" endtime="20221031 14:00:28.392"/>
+</kw>
+<kw name="Get Element Text" library="XML">
+<var>${city}</var>
+<arg>${child_elements[4]}</arg>
+<doc>Returns all text of the element, possibly whitespace normalized.</doc>
+<msg timestamp="20221031 14:00:28.394" level="INFO">${city} = Seattle</msg>
+<status status="PASS" starttime="20221031 14:00:28.392" endtime="20221031 14:00:28.394"/>
 </kw>
 <kw name="Should Be Equal" library="BuiltIn">
-<arg>${country_Name[0]}</arg>
-<arg>India</arg>
+<arg>${id}</arg>
+<arg>15</arg>
 <doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" starttime="20221028 08:52:37.688" endtime="20221028 08:52:37.688"/>
-</kw>
-<kw name="Get Value From Json" library="JSONLibrary">
-<var>${border}</var>
-<arg>${response.json()}</arg>
-<arg>$.borders[0]</arg>
-<doc>Get Value From JSON using JSONPath</doc>
-<msg timestamp="20221028 08:52:37.735" level="INFO">${border} = ['AFG']</msg>
-<status status="PASS" starttime="20221028 08:52:37.688" endtime="20221028 08:52:37.735"/>
-</kw>
-<kw name="Log To Console" library="BuiltIn">
-<arg>${border[0]}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20221028 08:52:37.735" endtime="20221028 08:52:37.735"/>
+<status status="PASS" starttime="20221031 14:00:28.395" endtime="20221031 14:00:28.395"/>
 </kw>
 <kw name="Should Be Equal" library="BuiltIn">
-<arg>${border[0]}</arg>
-<arg>AFG</arg>
+<arg>${fname}</arg>
+<arg>Bill</arg>
 <doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" starttime="20221028 08:52:37.735" endtime="20221028 08:52:37.735"/>
+<status status="PASS" starttime="20221031 14:00:28.396" endtime="20221031 14:00:28.396"/>
 </kw>
-<kw name="Get Value From Json" library="JSONLibrary">
-<var>${borders}</var>
-<arg>${response.json()}</arg>
-<arg>$.borders</arg>
-<doc>Get Value From JSON using JSONPath</doc>
-<msg timestamp="20221028 08:52:37.773" level="INFO">${borders} = [['AFG', 'BGD', 'BTN', 'MMR', 'CHN', 'NPL', 'PAK', 'LKA']]</msg>
-<status status="PASS" starttime="20221028 08:52:37.735" endtime="20221028 08:52:37.773"/>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${lname}</arg>
+<arg>Clancy</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20221031 14:00:28.397" endtime="20221031 14:00:28.397"/>
 </kw>
-<kw name="Log To Console" library="BuiltIn">
-<arg>${borders[0]}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20221028 08:52:37.773" endtime="20221028 08:52:37.773"/>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${street}</arg>
+<arg>319 Upland Pl.</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20221031 14:00:28.398" endtime="20221031 14:00:28.398"/>
 </kw>
-<kw name="Should Contain Any" library="BuiltIn">
-<arg>${borders[0]}</arg>
-<arg>AFG</arg>
-<arg>BGD</arg>
-<arg>CHN</arg>
-<doc>Fails if ``container`` does not contain any of the ``*items``.</doc>
-<status status="PASS" starttime="20221028 08:52:37.773" endtime="20221028 08:52:37.773"/>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${city}</arg>
+<arg>Seattle</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20221031 14:00:28.399" endtime="20221031 14:00:28.400"/>
 </kw>
-<kw name="Should Not Contain Any" library="BuiltIn">
-<arg>${borders[0]}</arg>
-<arg>ABC</arg>
-<arg>XYZ</arg>
-<doc>Fails if ``container`` contains one or more of the ``*items``.</doc>
-<status status="PASS" starttime="20221028 08:52:37.788" endtime="20221028 08:52:37.788"/>
-</kw>
-<status status="PASS" starttime="20221028 08:52:36.800" endtime="20221028 08:52:37.788"/>
+<status status="PASS" starttime="20221031 14:00:27.930" endtime="20221031 14:00:28.401"/>
 </test>
-<status status="PASS" starttime="20221028 08:52:36.484" endtime="20221028 08:52:37.788"/>
+<status status="PASS" starttime="20221031 14:00:27.654" endtime="20221031 14:00:28.404"/>
 </suite>
 <statistics>
 <total>
@@ -106,7 +148,7 @@
 <tag>
 </tag>
 <suite>
-<stat pass="1" fail="0" skip="0" id="s1" name="TC4 ComplexJSONValidation">TC4 ComplexJSONValidation</stat>
+<stat pass="1" fail="0" skip="0" id="s1" name="TC6 XMLResponse">TC6 XMLResponse</stat>
 </suite>
 </statistics>
 <errors>
