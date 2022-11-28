@@ -1,117 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.0.1 (Python 3.9.13 on win32)" generated="20221118 14:21:51.960" rpa="false" schemaversion="3">
-<suite id="s1" name="TC9 BearerToken" source="C:\Users\SatishKumar\PycharmProjects\API_Automation\TestCases\TC9_BearerToken.robot">
-<test id="s1-t1" name="Create Token PSA" line="12">
-<kw name="Create Session" library="RequestsLibrary">
-<arg>mysession</arg>
-<arg>${base_url}</arg>
-<doc>Create Session: create a HTTP session to a server</doc>
-<msg timestamp="20221118 14:21:52.307" level="INFO">Creating Session using : alias=mysession, url=https://alpha4-api.payschools.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<status status="PASS" starttime="20221118 14:21:52.307" endtime="20221118 14:21:52.307"/>
-</kw>
-<kw name="Create Dictionary" library="BuiltIn">
-<var>${body}</var>
-<arg>UserName=ChimeraQA</arg>
-<arg>Password=QA2022Testing</arg>
-<arg>URL=https://alpha4a-test.sdms2.com/</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20221118 14:21:52.307" level="INFO">${body} = {'UserName': 'ChimeraQA', 'Password': 'QA2022Testing', 'URL': 'https://alpha4a-test.sdms2.com/'}</msg>
-<status status="PASS" starttime="20221118 14:21:52.307" endtime="20221118 14:21:52.307"/>
-</kw>
-<kw name="Create Dictionary" library="BuiltIn">
-<var>${header}</var>
-<arg>Content-Type=application/json</arg>
-<arg>Authorization=Token NewAdminKey1</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20221118 14:21:52.307" level="INFO">${header} = {'Content-Type': 'application/json', 'Authorization': 'Token NewAdminKey1'}</msg>
-<status status="PASS" starttime="20221118 14:21:52.307" endtime="20221118 14:21:52.307"/>
-</kw>
-<kw name="Post Request" library="RequestsLibrary">
-<var>${response}</var>
-<arg>mysession</arg>
-<arg>/v2/public/Authentication</arg>
-<arg>data=${body}</arg>
-<arg>headers=${header}</arg>
-<doc>*DEPRECATED* Please use `POST On Session` instead.</doc>
-<msg timestamp="20221118 14:21:52.307" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
-<msg timestamp="20221118 14:21:58.429" level="INFO">POST Request : url=https://alpha4-api.payschools.com/v2/public/Authentication 
- path_url=/v2/public/Authentication 
- headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Authorization': 'Token NewAdminKey1', 'Content-Length': '96'} 
- body={"UserName": "ChimeraQA", "Password": "QA2022Testing", "URL": "https://alpha4a-test.sdms2.com/"} 
- </msg>
-<msg timestamp="20221118 14:21:58.429" level="INFO">POST Response : url=https://alpha4-api.payschools.com/v2/public/Authentication 
- status=200, reason=OK 
- headers={'Date': 'Fri, 18 Nov 2022 08:51:59 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'RequestId': 'a345e959-f27f-4ebe-a070-a6816de08073', 'X-Powered-By': 'ASP.NET', 'CF-Cache-Status': 'DYNAMIC', 'Server': 'cloudflare', 'CF-RAY': '76bf7783dce86ec5-BOM', 'Content-Encoding': 'gzip'} 
- body={"APIKey":"c71fbe779ffd4e8ca4125f460e590f81nOPI659mzU143IIbj0Yit"} 
- </msg>
-<msg timestamp="20221118 14:21:58.429" level="INFO">C:\Users\SatishKumar\PycharmProjects\API_Automation\venv\lib\site-packages\urllib3\connectionpool.py:1045: InsecureRequestWarning: Unverified HTTPS request is being made to host 'alpha4-api.payschools.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
-  warnings.warn(</msg>
-<msg timestamp="20221118 14:21:58.429" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20221118 14:21:52.307" endtime="20221118 14:21:58.429"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>${response.status_code}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20221118 14:21:58.429" level="INFO">200</msg>
-<status status="PASS" starttime="20221118 14:21:58.429" endtime="20221118 14:21:58.429"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>${response.json()}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20221118 14:21:58.429" level="INFO">{'APIKey': 'c71fbe779ffd4e8ca4125f460e590f81nOPI659mzU143IIbj0Yit'}</msg>
-<status status="PASS" starttime="20221118 14:21:58.429" endtime="20221118 14:21:58.429"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>${response.headers}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20221118 14:21:58.429" level="INFO">{'Date': 'Fri, 18 Nov 2022 08:51:59 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'RequestId': 'a345e959-f27f-4ebe-a070-a6816de08073', 'X-Powered-By': 'ASP.NET', 'CF-Cache-Status': 'DYNAMIC', 'Server': 'cloudflare', 'CF-RAY': '76bf7783dce86ec5-BOM', 'Content-Encoding': 'gzip'}</msg>
-<status status="PASS" starttime="20221118 14:21:58.429" endtime="20221118 14:21:58.429"/>
-</kw>
-<kw name="Get Value From Json" library="JSONLibrary">
-<var>${value}</var>
-<arg>${response.json()}</arg>
-<arg>$.APIKey</arg>
-<doc>Get Value From JSON using JSONPath</doc>
-<msg timestamp="20221118 14:21:58.529" level="INFO">${value} = ['c71fbe779ffd4e8ca4125f460e590f81nOPI659mzU143IIbj0Yit']</msg>
-<status status="PASS" starttime="20221118 14:21:58.429" endtime="20221118 14:21:58.529"/>
-</kw>
-<kw name="Convert To String" library="BuiltIn">
-<var>${api_string}</var>
-<arg>${value[0]}</arg>
-<doc>Converts the given item to a Unicode string.</doc>
-<msg timestamp="20221118 14:21:58.529" level="INFO">${api_string} = c71fbe779ffd4e8ca4125f460e590f81nOPI659mzU143IIbj0Yit</msg>
-<status status="PASS" starttime="20221118 14:21:58.529" endtime="20221118 14:21:58.529"/>
-</kw>
-<kw name="Catenate" library="BuiltIn">
+<robot generator="Robot 6.0.1 (Python 3.11.0 on win32)" generated="20221128 22:45:56.610" rpa="false" schemaversion="3">
+<suite id="s1" name="TC2 Fees" source="C:\Users\SatishKumar\PycharmProjects\API_Automation\I3\TC2_Fees.robot">
+<test id="s1-t1" name="Get API Token" line="13">
+<kw name="Get Token" library="get_api">
 <var>${token}</var>
-<arg>Token ${api_string}</arg>
-<doc>Catenates the given items together and returns the resulted string.</doc>
-<msg timestamp="20221118 14:21:58.545" level="INFO">${token} = Token c71fbe779ffd4e8ca4125f460e590f81nOPI659mzU143IIbj0Yit</msg>
-<status status="PASS" starttime="20221118 14:21:58.529" endtime="20221118 14:21:58.545"/>
+<msg timestamp="20221128 22:45:58.664" level="INFO">${token} = Token 3cab29036a3c4e0ab8e2e6d93a5a2dc7eGSct1O7jIOzny7bj3Pht</msg>
+<status status="PASS" starttime="20221128 22:45:56.927" endtime="20221128 22:45:58.664"/>
 </kw>
 <kw name="Set Global Variable" library="BuiltIn">
 <arg>${token}</arg>
 <doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20221118 14:21:58.545" level="INFO">${token} = Token c71fbe779ffd4e8ca4125f460e590f81nOPI659mzU143IIbj0Yit</msg>
-<status status="PASS" starttime="20221118 14:21:58.545" endtime="20221118 14:21:58.545"/>
+<msg timestamp="20221128 22:45:58.664" level="INFO">${token} = Token 3cab29036a3c4e0ab8e2e6d93a5a2dc7eGSct1O7jIOzny7bj3Pht</msg>
+<status status="PASS" starttime="20221128 22:45:58.664" endtime="20221128 22:45:58.664"/>
 </kw>
-<status status="PASS" starttime="20221118 14:21:52.307" endtime="20221118 14:21:58.545"/>
+<status status="PASS" starttime="20221128 22:45:56.927" endtime="20221128 22:45:58.664"/>
 </test>
-<test id="s1-t2" name="Get User Details" line="27">
+<test id="s1-t2" name="GET Fees by Search" line="17">
 <kw name="Create Session" library="RequestsLibrary">
 <arg>mysession</arg>
 <arg>${base_url}</arg>
 <doc>Create Session: create a HTTP session to a server</doc>
-<msg timestamp="20221118 14:21:58.545" level="INFO">Creating Session using : alias=mysession, url=https://alpha4-api.payschools.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<status status="PASS" starttime="20221118 14:21:58.545" endtime="20221118 14:21:58.545"/>
+<msg timestamp="20221128 22:45:58.664" level="INFO">Creating Session using : alias=mysession, url=https://alpha4-api.payschools.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20221128 22:45:58.664" endtime="20221128 22:45:58.664"/>
 </kw>
 <kw name="Create Dictionary" library="BuiltIn">
 <var>${headers}</var>
 <arg>Content-Type=application/json</arg>
 <arg>Authorization=${token}</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20221118 14:21:58.545" level="INFO">${headers} = {'Content-Type': 'application/json', 'Authorization': 'Token c71fbe779ffd4e8ca4125f460e590f81nOPI659mzU143IIbj0Yit'}</msg>
-<status status="PASS" starttime="20221118 14:21:58.545" endtime="20221118 14:21:58.545"/>
+<msg timestamp="20221128 22:45:58.664" level="INFO">${headers} = {'Content-Type': 'application/json', 'Authorization': 'Token 3cab29036a3c4e0ab8e2e6d93a5a2dc7eGSct1O7jIOzny7bj3Pht'}</msg>
+<status status="PASS" starttime="20221128 22:45:58.664" endtime="20221128 22:45:58.664"/>
 </kw>
 <kw name="GET On Session" library="RequestsLibrary">
 <var>${response}</var>
@@ -119,444 +37,41 @@
 <arg>/v2/public/user</arg>
 <arg>headers=${headers}</arg>
 <doc>Sends a GET request on a previously created HTTP Session.</doc>
-<msg timestamp="20221118 14:21:59.954" level="INFO">GET Request : url=https://alpha4-api.payschools.com/v2/public/user 
+<msg timestamp="20221128 22:46:00.285" level="INFO">GET Request : url=https://alpha4-api.payschools.com/v2/public/user 
  path_url=/v2/public/user 
- headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Authorization': 'Token c71fbe779ffd4e8ca4125f460e590f81nOPI659mzU143IIbj0Yit'} 
+ headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Authorization': 'Token 3cab29036a3c4e0ab8e2e6d93a5a2dc7eGSct1O7jIOzny7bj3Pht'} 
  body=None 
  </msg>
-<msg timestamp="20221118 14:21:59.954" level="INFO">GET Response : url=https://alpha4-api.payschools.com/v2/public/user 
+<msg timestamp="20221128 22:46:00.285" level="INFO">GET Response : url=https://alpha4-api.payschools.com/v2/public/user 
  status=200, reason=OK 
- headers={'Date': 'Fri, 18 Nov 2022 08:52:00 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'RequestId': 'bb1b327d-aaaa-4330-a2d3-a28d56e9400f', 'X-Powered-By': 'ASP.NET', 'CF-Cache-Status': 'DYNAMIC', 'Server': 'cloudflare', 'CF-RAY': '76bf77a97d418630-BOM', 'Content-Encoding': 'gzip'} 
+ headers={'Date': 'Mon, 28 Nov 2022 17:16:00 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'RequestId': '5183011e-7007-417f-a49f-91a420fbb053', 'X-Powered-By': 'ASP.NET', 'CF-Cache-Status': 'DYNAMIC', 'Server': 'cloudflare', 'CF-RAY': '7714bfadfecd85f1-BOM', 'Content-Encoding': 'gzip'} 
  body={"UserName":"Chimera QA","UserEmail":null,"FirstName":"Chimera","LastName":"QA","IsSuperAdmin":true,"Version":null,"Site":{"IntSiteId":5025,"SiteId":"Trunk___2022_CY4_SantaClarita_Oct31","StieName":"Trunk___2022_CY4_SantaClarita_Oct31"},"Roles":[],"Districts":[{"IntDistrictId":2,"DisrictName":"Castaic"},{"IntDistrictId":3,"DisrictName":"Newhall"},{"IntDistrictId":4,"DisrictName":"Sulphur"},{"IntDistrictId":5,"DisrictName":"Saugus"}],"UserSession":{"DisplayLogoutPopup":1800,"DisplayLogoutPopupTimeout":600}} 
  </msg>
-<msg timestamp="20221118 14:21:59.954" level="INFO">C:\Users\SatishKumar\PycharmProjects\API_Automation\venv\lib\site-packages\urllib3\connectionpool.py:1045: InsecureRequestWarning: Unverified HTTPS request is being made to host 'alpha4-api.payschools.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+<msg timestamp="20221128 22:46:00.285" level="INFO">C:\Users\SatishKumar\PycharmProjects\API_Automation\venv\Lib\site-packages\urllib3\connectionpool.py:1045: InsecureRequestWarning: Unverified HTTPS request is being made to host 'alpha4-api.payschools.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
   warnings.warn(</msg>
-<msg timestamp="20221118 14:21:59.956" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20221118 14:21:58.545" endtime="20221118 14:21:59.956"/>
+<msg timestamp="20221128 22:46:00.285" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20221128 22:45:58.664" endtime="20221128 22:46:00.285"/>
 </kw>
 <kw name="Log" library="BuiltIn">
 <arg>${response.content}</arg>
 <doc>Logs the given message with the given level.</doc>
-<msg timestamp="20221118 14:21:59.956" level="INFO">{"UserName":"Chimera QA","UserEmail":null,"FirstName":"Chimera","LastName":"QA","IsSuperAdmin":true,"Version":null,"Site":{"IntSiteId":5025,"SiteId":"Trunk___2022_CY4_SantaClarita_Oct31","StieName":"Trunk___2022_CY4_SantaClarita_Oct31"},"Roles":[],"Districts":[{"IntDistrictId":2,"DisrictName":"Castaic"},{"IntDistrictId":3,"DisrictName":"Newhall"},{"IntDistrictId":4,"DisrictName":"Sulphur"},{"IntDistrictId":5,"DisrictName":"Saugus"}],"UserSession":{"DisplayLogoutPopup":1800,"DisplayLogoutPopupTimeout":600}}</msg>
-<status status="PASS" starttime="20221118 14:21:59.956" endtime="20221118 14:21:59.956"/>
+<msg timestamp="20221128 22:46:00.285" level="INFO">{"UserName":"Chimera QA","UserEmail":null,"FirstName":"Chimera","LastName":"QA","IsSuperAdmin":true,"Version":null,"Site":{"IntSiteId":5025,"SiteId":"Trunk___2022_CY4_SantaClarita_Oct31","StieName":"Trunk___2022_CY4_SantaClarita_Oct31"},"Roles":[],"Districts":[{"IntDistrictId":2,"DisrictName":"Castaic"},{"IntDistrictId":3,"DisrictName":"Newhall"},{"IntDistrictId":4,"DisrictName":"Sulphur"},{"IntDistrictId":5,"DisrictName":"Saugus"}],"UserSession":{"DisplayLogoutPopup":1800,"DisplayLogoutPopupTimeout":600}}</msg>
+<status status="PASS" starttime="20221128 22:46:00.285" endtime="20221128 22:46:00.285"/>
 </kw>
-<kw name="Log" library="BuiltIn">
-<arg>${response.status_code}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20221118 14:21:59.956" level="INFO">200</msg>
-<status status="PASS" starttime="20221118 14:21:59.956" endtime="20221118 14:21:59.956"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>${response.headers}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20221118 14:21:59.964" level="INFO">{'Date': 'Fri, 18 Nov 2022 08:52:00 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'RequestId': 'bb1b327d-aaaa-4330-a2d3-a28d56e9400f', 'X-Powered-By': 'ASP.NET', 'CF-Cache-Status': 'DYNAMIC', 'Server': 'cloudflare', 'CF-RAY': '76bf77a97d418630-BOM', 'Content-Encoding': 'gzip'}</msg>
-<status status="PASS" starttime="20221118 14:21:59.956" endtime="20221118 14:21:59.964"/>
-</kw>
-<status status="PASS" starttime="20221118 14:21:58.545" endtime="20221118 14:21:59.966"/>
+<status status="PASS" starttime="20221128 22:45:58.664" endtime="20221128 22:46:00.301"/>
 </test>
-<test id="s1-t3" name="Get Menu details" line="35">
-<kw name="Create Session" library="RequestsLibrary">
-<arg>mysession</arg>
-<arg>${base_url}</arg>
-<doc>Create Session: create a HTTP session to a server</doc>
-<msg timestamp="20221118 14:21:59.966" level="INFO">Creating Session using : alias=mysession, url=https://alpha4-api.payschools.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<status status="PASS" starttime="20221118 14:21:59.966" endtime="20221118 14:21:59.966"/>
-</kw>
-<kw name="Create Dictionary" library="BuiltIn">
-<var>${headers}</var>
-<arg>Content-Type=application/json</arg>
-<arg>Authorization=${token}</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20221118 14:21:59.966" level="INFO">${headers} = {'Content-Type': 'application/json', 'Authorization': 'Token c71fbe779ffd4e8ca4125f460e590f81nOPI659mzU143IIbj0Yit'}</msg>
-<status status="PASS" starttime="20221118 14:21:59.966" endtime="20221118 14:21:59.966"/>
-</kw>
-<kw name="GET On Session" library="RequestsLibrary">
-<var>${response}</var>
-<arg>mysession</arg>
-<arg>/v2/public/Menu</arg>
-<arg>headers=${headers}</arg>
-<doc>Sends a GET request on a previously created HTTP Session.</doc>
-<msg timestamp="20221118 14:22:02.263" level="INFO">GET Request : url=https://alpha4-api.payschools.com/v2/public/Menu 
- path_url=/v2/public/Menu 
- headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Authorization': 'Token c71fbe779ffd4e8ca4125f460e590f81nOPI659mzU143IIbj0Yit'} 
- body=None 
- </msg>
-<msg timestamp="20221118 14:22:02.263" level="INFO">GET Response : url=https://alpha4-api.payschools.com/v2/public/Menu 
- status=200, reason=OK 
- headers={'Date': 'Fri, 18 Nov 2022 08:52:02 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'RequestId': '32e84283-1831-43f9-9c6a-37543fb815fc', 'X-Powered-By': 'ASP.NET', 'CF-Cache-Status': 'DYNAMIC', 'Server': 'cloudflare', 'CF-RAY': '76bf77b31ac56ec2-BOM', 'Content-Encoding': 'gzip'} 
- body=[{"IntMenuId":1,"MenuId":"Home","Name":"Home","Description":"Home Page","SortOrder":100000,"URL":"/Module/SDMS/Home.aspx","IntParentMenuId":null,"ParentMenuId":null,"IsActive":true},{"IntMenuId":7,"MenuId":"Patrons","Name":"Patrons","Description":"Search, view and edit patron's inQuikAppsion.","SortOrder":200000,"URL":"","IntParentMenuId":null,"ParentMenuId":null,"IsActive":true},{"IntMenuId":37,"MenuId":"Reports_Main","Name":"Reports","Description":"View reports.","SortOrder":400000,"URL":"/Module/SDMS/ReportViewer.aspx","IntParentMenuId":null,"ParentMenuId":null,"IsActive":true},{"IntMenuId":43,"MenuId":"NurseTracking","Name":"Nurse Tracking","Description":"Nurse Tracking","SortOrder":500000,"URL":"","IntParentMenuId":null,"ParentMenuId":null,"IsActive":true},{"IntMenuId":239,"MenuId":"FORMAT","Name":"QuikApps","Description":"QuikApps","SortOrder":554000,"URL":"/Module/FORMAT/FORMAT.aspx","IntParentMenuId":null,"ParentMenuId":null,"IsActive":true},{"IntMenuId":467,"MenuId":"FR_Forms","Name":"Forms","Description":"Forms","SortOrder":555000,"URL":"","IntParentMenuId":null,"ParentMenuId":null,"IsActive":true},{"IntMenuId":223,"MenuId":"School Programs","Name":"School Programs","Description":"School Programs","SortOrder":557000,"URL":"/Module/SchoolPrograms/SP_Programs.aspx","IntParentMenuId":null,"ParentMenuId":null,"IsActive":true},{"IntMenuId":236,"MenuId":"HomeroomMeals","Name":"Homeroom Meals","Description":"Homeroom Meals","SortOrder":558000,"URL":"/Module/SDMS/HomeroomMeals.aspx","IntParentMenuId":null,"ParentMenuId":null,"IsActive":true},{"IntMenuId":59,"MenuId":"STARS","Name":"STARS","Description":"STARS","SortOrder":600000,"URL":"","IntParentMenuId":null,"ParentMenuId":null,"IsActive":true},{"IntMenuId":114,"MenuId":"PFI","Name":"Fees","Description":"PayForIt Terminal","SortOrder":640000,"URL":"","IntParentMenuId":null,"ParentMenuId":null,"IsActive":true},{"IntMenuId":86,"MenuId":"Timeclock","Name":"Timeclock","Description":"Timeclock Module","SortOrder":650000,"URL":"","IntParentMenuId":null,"ParentMenuId":null,"IsActive":true},{"IntMenuId":107,"MenuId":"ICL","Name":"ICL","Description":"ICL Module","SortOrder":660000,"URL":"","IntParentMenuId":null,"ParentMenuId":null,"IsActive":true},{"IntMenuId":111,"MenuId":"QSPMgr","Name":"QL Manager","Description":"QuikLunch Manager","SortOrder":660000,"URL":"","IntParentMenuId":null,"ParentMenuId":null,"IsActive":true},{"IntMenuId":515,"MenuId":"Inventory","Name":"Inventory","Description":"Inventory","SortOrder":670000,"URL":"","IntParentMenuId":null,"ParentMenuId":null,"IsActive":true},{"IntMenuId":3,"MenuId":"Admin","Name":"Admin","Description":"System Administration","SortOrder":700000,"URL":"","IntParentMenuId":null,"ParentMenuId":null,"IsActive":true},{"IntMenuId":487,"MenuId":"AdminNew","Name":"Admin New","Description":"System Administration","SortOrder":700001,"URL":"/Module/SDMS/Admin/DefaultAdmin.aspx","IntParentMenuId":null,"ParentMenuId":null,"IsActive":true},{"IntMenuId":4,"MenuId":"Help","Name":"Help","Description":"Help","SortOrder":800000,"URL":"","IntParentMenuId":null,"ParentMenuId":null,"IsActive":true},{"IntMenuId":496,"MenuId":"Inbox","Name":"Inbox","Description":"User Inbox","SortOrder":800001,"URL":"/Module/SDMS/Notifications.aspx","IntParentMenuId":null,"ParentMenuId":null,"IsActive":true},{"IntMenuId":12,"MenuId":"AdminLocationConfig","Name":"Location Configuration","Description":"Configure Location.","SortOrder":700100,"URL":"","IntParentMenuId":3,"ParentMenuId":"Admin","IsActive":true},{"IntMenuId":13,"MenuId":"AdminApplicationConfig","Name":"Application Configuration","Description":"Configure application","SortOrder":700200,"URL":"","IntParentMenuId":3,"ParentMenuId":"Admin","IsActive":true},{"IntMenuId":14,"MenuId":"AdminUserConfig","Name":"User Configuration","Description":"Configure users and permissions.","SortOrder":700300,"URL":"","IntParentMenuId":3,"ParentMenuId":"Admin","IsActive":true},{"IntMenuId":15,"MenuId":"AdminImportExport","Name":"Import/Export Configuration","Description":"Configure import and export.","SortOrder":700400,"URL":"","IntParentMenuId":3,"ParentMenuId":"Admin","IsActive":true},{"IntMenuId":16,"MenuId":"AdminEditNews","Name":"Edit News","Description":"Edit news.","SortOrder":700500,"URL":"/Module/SDMS/Admin/EditNews.aspx","IntParentMenuId":3,"ParentMenuId":"Admin","IsActive":true},{"IntMenuId":58,"MenuId":"AdminDatabaseMaintenance","Name":"Database Maintenance","Description":"Backup and maintain the database.","SortOrder":700550,"URL":"/Module/SDMS/Admin/DatabaseMaintenance.aspx","IntParentMenuId":3,"ParentMenuId":"Admin","IsActive":true},{"IntMenuId":184,"MenuId":"Admin_Letters","Name":"Letters","Description":"Letters","SortOrder":700550,"URL":"","IntParentMenuId":3,"ParentMenuId":"Admin","IsActive":true},{"IntMenuId":139,"MenuId":"AdminUtil","Name":"Utilities","Description":"Administrative utilities","SortOrder":700570,"URL":"","IntParentMenuId":3,"ParentMenuId":"Admin","IsActive":true},{"IntMenuId":17,"MenuId":"AdminRunTasks","Name":"Run Administrative Tasks","Description":"Run administrative tasks.","SortOrder":700600,"URL":"","IntParentMenuId":3,"ParentMenuId":"Admin","IsActive":true},{"IntMenuId":469,"MenuId":"AdminViewResendEmail","Name":"View/Resend Email","Description":"View/Resend Email","SortOrder":700620,"URL":"/Module/SDMS/Admin/EmailStatus.aspx","IntParentMenuId":3,"ParentMenuId":"Admin","IsActive":true},{"IntMenuId":224,"MenuId":"AdminScheduler","Name":"Task Scheduler","Description":"Task Scheduler","SortOrder":700690,"URL":"/Module/SDMS/Admin/Scheduler.aspx","IntParentMenuId":3,"ParentMenuId":"Admin","IsActive":true},{"IntMenuId":5,"MenuId":"Feedback","Name":"Feedback","Description":"Send feedback to support.","SortOrder":800001,"URL":"/Module/SDMS/Feedback.aspx","IntParentMenuId":4,"ParentMenuId":"Help","IsActive":true},{"IntMenuId":6,"MenuId":"About","Name":"About","Description":"View application inQuikAppsion.","SortOrder":800002,"URL":"/Module/SDMS/About.aspx","IntParentMenuId":4,"ParentMenuId":"Help","IsActive":true},{"IntMenuId":219,"MenuId":"PatronSearch","Name":"Search Patrons","Description":"Search Patrons","SortOrder":200005,"URL":"/Module/SDMS/PatronView2.aspx","IntParentMenuId":7,"ParentMenuId":"Patrons","IsActive":true},{"IntMenuId":164,"MenuId":"PatronPrintIdCards","Name":"Print Id Cards","Description":"Print Id Cards","SortOrder":200040,"URL":"/Module/ID_PRINTER/PatronPrintIdCards.aspx","IntParentMenuId":7,"ParentMenuId":"Patrons","IsActive":true},{"IntMenuId":171,"MenuId":"PrintHomeroomDataSheet","Name":"Print Homerooms","Description":"Print Homerooms","SortOrder":200050,"URL":"/Module/POS/HomeroomDataSheetPrinter.aspx","IntParentMenuId":7,"ParentMenuId":"Patrons","IsActive":true},{"IntMenuId":256,"MenuId":"PatronsAddEdit","Name":"Add Patron","Description":"Add Patron","SortOrder":200060,"URL":"/Module/SDMS/PatronAddEdit.aspx","IntParentMenuId":7,"ParentMenuId":"Patrons","IsActive":true},{"IntMenuId":195,"MenuId":"DirectCertIO","Name":"Direct Cert Export","Description":"Direct Cert Export","SortOrder":800004,"URL":"/Module/SDMS/Admin/DirectCertIO.aspx","IntParentMenuId":7,"ParentMenuId":"Patrons","IsActive":true},{"IntMenuId":258,"MenuId":"AdminUtil_GenericPatronExport","Name":"Generic Patron Export","Description":"Configure and run generic patron export","SortOrder":800005,"URL":"/Module/SDMS/Admin/GenericPatronExport.aspx","IntParentMenuId":7,"ParentMenuId":"Patrons","IsActive":true},{"IntMenuId":18,"MenuId":"AdminEditLicense","Name":"Edit License","Description":"Edit license codes.","SortOrder":700110,"URL":"/Module/SDMS/Admin/EditLicense.aspx","IntParentMenuId":12,"ParentMenuId":"AdminLocationConfig","IsActive":true},{"IntMenuId":19,"MenuId":"AdminEditDistricts","Name":"Edit Districts","Description":"Edit district inQuikAppsion.","SortOrder":700120,"URL":"/Module/SDMS/Admin/EditDistricts.aspx","IntParentMenuId":12,"ParentMenuId":"AdminLocationConfig","IsActive":true},{"IntMenuId":20,"MenuId":"AdminEditSchools","Name":"Edit Schools","Description":"Edit school inQuikAppsion.","SortOrder":700130,"URL":"/Module/SDMS/Admin/EditSchools.aspx","IntParentMenuId":12,"ParentMenuId":"AdminLocationConfig","IsActive":true},{"IntMenuId":55,"MenuId":"AdminEditHomerooms","Name":"Edit Homerooms","Description":"Edit homeroom codes.","SortOrder":700135,"URL":"/Module/SDMS/Admin/EditHomerooms.aspx","IntParentMenuId":12,"ParentMenuId":"AdminLocationConfig","IsActive":true},{"IntMenuId":21,"MenuId":"AdminEditGrades","Name":"Edit Grades","Description":"Edit grade inQuikAppsion.","SortOrder":700150,"URL":"/Module/SDMS/Admin/EditGrades.aspx","IntParentMenuId":12,"ParentMenuId":"AdminLocationConfig","IsActive":true},{"IntMenuId":238,"MenuId":"AdminEditDisclosureCategory","Name":"Edit Disclosure Categories","Description":"Edit Disclosure Categories for meal status.","SortOrder":700153,"URL":"/Module/SDMS/Admin/EditDisclosureCategories.aspx","IntParentMenuId":12,"ParentMenuId":"AdminLocationConfig","IsActive":true},{"IntMenuId":22,"MenuId":"AdminEditEthnicity","Name":"Edit Ethnicity","Description":"Edit ethnicity inQuikAppsion.","SortOrder":700160,"URL":"/Module/SDMS/Admin/EditEthnicity.aspx","IntParentMenuId":12,"ParentMenuId":"AdminLocationConfig","IsActive":true},{"IntMenuId":23,"MenuId":"AdminEditLunchStatus","Name":"Edit Lunch Status","Description":"Edit lunch status mappings.","SortOrder":700170,"URL":"/Module/SDMS/Admin/EditLunchStatus.aspx","IntParentMenuId":12,"ParentMenuId":"AdminLocationConfig","IsActive":true},{"IntMenuId":242,"MenuId":"AdminConfigGeneral","Name":"General Configuration","Description":"General Configuration.","SortOrder":700265,"URL":"/Module/SDMS/Admin/Config.aspx","IntParentMenuId":13,"ParentMenuId":"AdminApplicationConfig","IsActive":true},{"IntMenuId":29,"MenuId":"AdminEditUsers","Name":"Edit Users","Description":"Edit users.","SortOrder":700310,"URL":"/Module/SDMS/Admin/EditUsers.aspx","IntParentMenuId":14,"ParentMenuId":"AdminUserConfig","IsActive":true},{"IntMenuId... (set the log level to DEBUG or TRACE to see the full content) 
- </msg>
-<msg timestamp="20221118 14:22:02.263" level="INFO">C:\Users\SatishKumar\PycharmProjects\API_Automation\venv\lib\site-packages\urllib3\connectionpool.py:1045: InsecureRequestWarning: Unverified HTTPS request is being made to host 'alpha4-api.payschools.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
-  warnings.warn(</msg>
-<msg timestamp="20221118 14:22:02.263" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20221118 14:21:59.966" endtime="20221118 14:22:02.263"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>${response.content}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20221118 14:22:02.263" level="INFO">[{"IntMenuId":1,"MenuId":"Home","Name":"Home","Description":"Home Page","SortOrder":100000,"URL":"/Module/SDMS/Home.aspx","IntParentMenuId":null,"ParentMenuId":null,"IsActive":true},{"IntMenuId":7,"MenuId":"Patrons","Name":"Patrons","Description":"Search, view and edit patron's inQuikAppsion.","SortOrder":200000,"URL":"","IntParentMenuId":null,"ParentMenuId":null,"IsActive":true},{"IntMenuId":37,"MenuId":"Reports_Main","Name":"Reports","Description":"View reports.","SortOrder":400000,"URL":"/Module/SDMS/ReportViewer.aspx","IntParentMenuId":null,"ParentMenuId":null,"IsActive":true},{"IntMenuId":43,"MenuId":"NurseTracking","Name":"Nurse Tracking","Description":"Nurse Tracking","SortOrder":500000,"URL":"","IntParentMenuId":null,"ParentMenuId":null,"IsActive":true},{"IntMenuId":239,"MenuId":"FORMAT","Name":"QuikApps","Description":"QuikApps","SortOrder":554000,"URL":"/Module/FORMAT/FORMAT.aspx","IntParentMenuId":null,"ParentMenuId":null,"IsActive":true},{"IntMenuId":467,"MenuId":"FR_Forms","Name":"Forms","Description":"Forms","SortOrder":555000,"URL":"","IntParentMenuId":null,"ParentMenuId":null,"IsActive":true},{"IntMenuId":223,"MenuId":"School Programs","Name":"School Programs","Description":"School Programs","SortOrder":557000,"URL":"/Module/SchoolPrograms/SP_Programs.aspx","IntParentMenuId":null,"ParentMenuId":null,"IsActive":true},{"IntMenuId":236,"MenuId":"HomeroomMeals","Name":"Homeroom Meals","Description":"Homeroom Meals","SortOrder":558000,"URL":"/Module/SDMS/HomeroomMeals.aspx","IntParentMenuId":null,"ParentMenuId":null,"IsActive":true},{"IntMenuId":59,"MenuId":"STARS","Name":"STARS","Description":"STARS","SortOrder":600000,"URL":"","IntParentMenuId":null,"ParentMenuId":null,"IsActive":true},{"IntMenuId":114,"MenuId":"PFI","Name":"Fees","Description":"PayForIt Terminal","SortOrder":640000,"URL":"","IntParentMenuId":null,"ParentMenuId":null,"IsActive":true},{"IntMenuId":86,"MenuId":"Timeclock","Name":"Timeclock","Description":"Timeclock Module","SortOrder":650000,"URL":"","IntParentMenuId":null,"ParentMenuId":null,"IsActive":true},{"IntMenuId":107,"MenuId":"ICL","Name":"ICL","Description":"ICL Module","SortOrder":660000,"URL":"","IntParentMenuId":null,"ParentMenuId":null,"IsActive":true},{"IntMenuId":111,"MenuId":"QSPMgr","Name":"QL Manager","Description":"QuikLunch Manager","SortOrder":660000,"URL":"","IntParentMenuId":null,"ParentMenuId":null,"IsActive":true},{"IntMenuId":515,"MenuId":"Inventory","Name":"Inventory","Description":"Inventory","SortOrder":670000,"URL":"","IntParentMenuId":null,"ParentMenuId":null,"IsActive":true},{"IntMenuId":3,"MenuId":"Admin","Name":"Admin","Description":"System Administration","SortOrder":700000,"URL":"","IntParentMenuId":null,"ParentMenuId":null,"IsActive":true},{"IntMenuId":487,"MenuId":"AdminNew","Name":"Admin New","Description":"System Administration","SortOrder":700001,"URL":"/Module/SDMS/Admin/DefaultAdmin.aspx","IntParentMenuId":null,"ParentMenuId":null,"IsActive":true},{"IntMenuId":4,"MenuId":"Help","Name":"Help","Description":"Help","SortOrder":800000,"URL":"","IntParentMenuId":null,"ParentMenuId":null,"IsActive":true},{"IntMenuId":496,"MenuId":"Inbox","Name":"Inbox","Description":"User Inbox","SortOrder":800001,"URL":"/Module/SDMS/Notifications.aspx","IntParentMenuId":null,"ParentMenuId":null,"IsActive":true},{"IntMenuId":12,"MenuId":"AdminLocationConfig","Name":"Location Configuration","Description":"Configure Location.","SortOrder":700100,"URL":"","IntParentMenuId":3,"ParentMenuId":"Admin","IsActive":true},{"IntMenuId":13,"MenuId":"AdminApplicationConfig","Name":"Application Configuration","Description":"Configure application","SortOrder":700200,"URL":"","IntParentMenuId":3,"ParentMenuId":"Admin","IsActive":true},{"IntMenuId":14,"MenuId":"AdminUserConfig","Name":"User Configuration","Description":"Configure users and permissions.","SortOrder":700300,"URL":"","IntParentMenuId":3,"ParentMenuId":"Admin","IsActive":true},{"IntMenuId":15,"MenuId":"AdminImportExport","Name":"Import/Export Configuration","Description":"Configure import and export.","SortOrder":700400,"URL":"","IntParentMenuId":3,"ParentMenuId":"Admin","IsActive":true},{"IntMenuId":16,"MenuId":"AdminEditNews","Name":"Edit News","Description":"Edit news.","SortOrder":700500,"URL":"/Module/SDMS/Admin/EditNews.aspx","IntParentMenuId":3,"ParentMenuId":"Admin","IsActive":true},{"IntMenuId":58,"MenuId":"AdminDatabaseMaintenance","Name":"Database Maintenance","Description":"Backup and maintain the database.","SortOrder":700550,"URL":"/Module/SDMS/Admin/DatabaseMaintenance.aspx","IntParentMenuId":3,"ParentMenuId":"Admin","IsActive":true},{"IntMenuId":184,"MenuId":"Admin_Letters","Name":"Letters","Description":"Letters","SortOrder":700550,"URL":"","IntParentMenuId":3,"ParentMenuId":"Admin","IsActive":true},{"IntMenuId":139,"MenuId":"AdminUtil","Name":"Utilities","Description":"Administrative utilities","SortOrder":700570,"URL":"","IntParentMenuId":3,"ParentMenuId":"Admin","IsActive":true},{"IntMenuId":17,"MenuId":"AdminRunTasks","Name":"Run Administrative Tasks","Description":"Run administrative tasks.","SortOrder":700600,"URL":"","IntParentMenuId":3,"ParentMenuId":"Admin","IsActive":true},{"IntMenuId":469,"MenuId":"AdminViewResendEmail","Name":"View/Resend Email","Description":"View/Resend Email","SortOrder":700620,"URL":"/Module/SDMS/Admin/EmailStatus.aspx","IntParentMenuId":3,"ParentMenuId":"Admin","IsActive":true},{"IntMenuId":224,"MenuId":"AdminScheduler","Name":"Task Scheduler","Description":"Task Scheduler","SortOrder":700690,"URL":"/Module/SDMS/Admin/Scheduler.aspx","IntParentMenuId":3,"ParentMenuId":"Admin","IsActive":true},{"IntMenuId":5,"MenuId":"Feedback","Name":"Feedback","Description":"Send feedback to support.","SortOrder":800001,"URL":"/Module/SDMS/Feedback.aspx","IntParentMenuId":4,"ParentMenuId":"Help","IsActive":true},{"IntMenuId":6,"MenuId":"About","Name":"About","Description":"View application inQuikAppsion.","SortOrder":800002,"URL":"/Module/SDMS/About.aspx","IntParentMenuId":4,"ParentMenuId":"Help","IsActive":true},{"IntMenuId":219,"MenuId":"PatronSearch","Name":"Search Patrons","Description":"Search Patrons","SortOrder":200005,"URL":"/Module/SDMS/PatronView2.aspx","IntParentMenuId":7,"ParentMenuId":"Patrons","IsActive":true},{"IntMenuId":164,"MenuId":"PatronPrintIdCards","Name":"Print Id Cards","Description":"Print Id Cards","SortOrder":200040,"URL":"/Module/ID_PRINTER/PatronPrintIdCards.aspx","IntParentMenuId":7,"ParentMenuId":"Patrons","IsActive":true},{"IntMenuId":171,"MenuId":"PrintHomeroomDataSheet","Name":"Print Homerooms","Description":"Print Homerooms","SortOrder":200050,"URL":"/Module/POS/HomeroomDataSheetPrinter.aspx","IntParentMenuId":7,"ParentMenuId":"Patrons","IsActive":true},{"IntMenuId":256,"MenuId":"PatronsAddEdit","Name":"Add Patron","Description":"Add Patron","SortOrder":200060,"URL":"/Module/SDMS/PatronAddEdit.aspx","IntParentMenuId":7,"ParentMenuId":"Patrons","IsActive":true},{"IntMenuId":195,"MenuId":"DirectCertIO","Name":"Direct Cert Export","Description":"Direct Cert Export","SortOrder":800004,"URL":"/Module/SDMS/Admin/DirectCertIO.aspx","IntParentMenuId":7,"ParentMenuId":"Patrons","IsActive":true},{"IntMenuId":258,"MenuId":"AdminUtil_GenericPatronExport","Name":"Generic Patron Export","Description":"Configure and run generic patron export","SortOrder":800005,"URL":"/Module/SDMS/Admin/GenericPatronExport.aspx","IntParentMenuId":7,"ParentMenuId":"Patrons","IsActive":true},{"IntMenuId":18,"MenuId":"AdminEditLicense","Name":"Edit License","Description":"Edit license codes.","SortOrder":700110,"URL":"/Module/SDMS/Admin/EditLicense.aspx","IntParentMenuId":12,"ParentMenuId":"AdminLocationConfig","IsActive":true},{"IntMenuId":19,"MenuId":"AdminEditDistricts","Name":"Edit Districts","Description":"Edit district inQuikAppsion.","SortOrder":700120,"URL":"/Module/SDMS/Admin/EditDistricts.aspx","IntParentMenuId":12,"ParentMenuId":"AdminLocationConfig","IsActive":true},{"IntMenuId":20,"MenuId":"AdminEditSchools","Name":"Edit Schools","Description":"Edit school inQuikAppsion.","SortOrder":700130,"URL":"/Module/SDMS/Admin/EditSchools.aspx","IntParentMenuId":12,"ParentMenuId":"AdminLocationConfig","IsActive":true},{"IntMenuId":55,"MenuId":"AdminEditHomerooms","Name":"Edit Homerooms","Description":"Edit homeroom codes.","SortOrder":700135,"URL":"/Module/SDMS/Admin/EditHomerooms.aspx","IntParentMenuId":12,"ParentMenuId":"AdminLocationConfig","IsActive":true},{"IntMenuId":21,"MenuId":"AdminEditGrades","Name":"Edit Grades","Description":"Edit grade inQuikAppsion.","SortOrder":700150,"URL":"/Module/SDMS/Admin/EditGrades.aspx","IntParentMenuId":12,"ParentMenuId":"AdminLocationConfig","IsActive":true},{"IntMenuId":238,"MenuId":"AdminEditDisclosureCategory","Name":"Edit Disclosure Categories","Description":"Edit Disclosure Categories for meal status.","SortOrder":700153,"URL":"/Module/SDMS/Admin/EditDisclosureCategories.aspx","IntParentMenuId":12,"ParentMenuId":"AdminLocationConfig","IsActive":true},{"IntMenuId":22,"MenuId":"AdminEditEthnicity","Name":"Edit Ethnicity","Description":"Edit ethnicity inQuikAppsion.","SortOrder":700160,"URL":"/Module/SDMS/Admin/EditEthnicity.aspx","IntParentMenuId":12,"ParentMenuId":"AdminLocationConfig","IsActive":true},{"IntMenuId":23,"MenuId":"AdminEditLunchStatus","Name":"Edit Lunch Status","Description":"Edit lunch status mappings.","SortOrder":700170,"URL":"/Module/SDMS/Admin/EditLunchStatus.aspx","IntParentMenuId":12,"ParentMenuId":"AdminLocationConfig","IsActive":true},{"IntMenuId":242,"MenuId":"AdminConfigGeneral","Name":"General Configuration","Description":"General Configuration.","SortOrder":700265,"URL":"/Module/SDMS/Admin/Config.aspx","IntParentMenuId":13,"ParentMenuId":"AdminApplicationConfig","IsActive":true},{"IntMenuId":29,"MenuId":"AdminEditUsers","Name":"Edit Users","Description":"Edit users.","SortOrder":700310,"URL":"/Module/SDMS/Admin/EditUsers.aspx","IntParentMenuId":14,"ParentMenuId":"AdminUserConfig","IsActive":true},{"IntMenuId":30,"MenuId":"AdminEditRoles","Name":"Edit Roles","Description":"Edit user roles.","SortOrder":700320,"URL":"/Module/SDMS/Admin/EditRoles.aspx","IntParentMenuId":14,"ParentMenuId":"AdminUserConfig","IsActive":true},{"IntMenuId":110,"MenuId":"AdminConfigLowBalanceExport","Name":"Low Balance Export","Description":"Configure Low Balance Export","SortOrder":700430,"URL":"/Module/ESDMS/Admin/ConfigLowBalanceExport.aspx","IntParentMenuId":15,"ParentMenuId":"AdminImportExport","IsActive":true},{"IntMenuId":197,"MenuId":"AdminConfigureUSASExport","Name":"Configure USAS Export","Description":"Configure USAS Export Settings","SortOrder":700450,"URL":"/Module/SDMS/Admin/USASConfigSettings.aspx","IntParentMenuId":15,"ParentMenuId":"AdminImportExport","IsActive":true},{"IntMenuId":199,"MenuId":"DirectCertEntities","Name":"Direct Cert Entities","Description":"Direct Cert Entities Maintenance","SortOrder":700450,"URL":"/Module/SDMS/Admin/DirectCertEntities.aspx","IntParentMenuId":15,"ParentMenuId":"AdminImportExport","IsActive":true},{"IntMenuId":241,"MenuId":"AdminConfigImportEdit","Name":"Import Edit Configuration","Description":"Import Edit Configuration by Table and Column","SortOrder":700460,"URL":"/Module/SDMS/Admin/ImportEditConfiguration.aspx","IntParentMenuId":15,"ParentMenuId":"AdminImportExport","IsActive":true},{"IntMenuId":34,"MenuId":"AdminRunImport","Name":"Run Import","Description":"Manually runs the selected import process.","SortOrder":700610,"URL":"/Module/SDMS/Admin/RunImport.aspx","IntParentMenuId":17,"ParentMenuId":"AdminRunTasks","IsActive":true},{"IntMenuId":198,"MenuId":"AdminRunExport","Name":"Run Export","Description":"Manually runs the selected export process.","SortOrder":700615,"URL":"/Module/SDMS/Admin/RunExport.aspx","IntParentMenuId":17,"ParentMenuId":"AdminRunTasks","IsActive":true},{"IntMenuId":35,"MenuId":"AdminRunAutoupdate","Name":"Run Autoupdate","Description":"Manually runs the autoupdate.","SortOrder":700620,"URL":"/Module/SDMS/Admin/RunAutoupdate.aspx","IntParentMenuId":17,"ParentMenuId":"AdminRunTasks","IsActive":true},{"IntMenuId":225,"MenuId":"AdminRunCreateFamily","Name":"Create/Update Families","Description":"Create/Update Families using address and phone number","SortOrder":700621,"URL":"/Module/SDMS/Admin/RunCreateFamily.aspx","IntParentMenuId":17,"ParentMenuId":"AdminRunTasks","IsActive":true},{"IntMenuId":234,"MenuId":"AdminRunZonarExport","Name":"Run Zonar Export","Description":"Export RFID numbers for zonar import.","SortOrder":700622,"URL":"/Module/SDMS/Admin/RunZonarExport.aspx","IntParentMenuId":17,"ParentMenuId":"AdminRunTasks","IsActive":true},{"IntMenuId":247,"MenuId":"AdminRunBalanceImport","Name":"Run Patron Balance Import","Description":"Import balances into patron account.","SortOrder":700623,"URL":"/Module/SDMS/Admin/RunBalanceImport.aspx","IntParentMenuId":17,"ParentMenuId":"AdminRunTasks","IsActive":true},{"IntMenuId":36,"MenuId":"AdminRunSuperExport","Name":"Run Super Export","Description":"Manually runs the super export.","SortOrder":700630,"URL":"/Module/SDMS/Admin/RunSuperExport.aspx","IntParentMenuId":17,"ParentMenuId":"AdminRunTasks","IsActive":true},{"IntMenuId":104,"MenuId":"AbsenceExport","Name":"Export Absence File","Description":"Export Absence file to FTP.","SortOrder":700640,"URL":"/Module/SDMS/Admin/RunExportAbsence.aspx","IntParentMenuId":17,"ParentMenuId":"AdminRunTasks","IsActive":true},{"IntMenuId":105,"MenuId":"AbsenceExportAddress","Name":"Export Absence Addresses","Description":"Export Absence Address Book to FTP.","SortOrder":700650,"URL":"/Module/SDMS/Admin/RunExportAbsenceAddress.aspx","IntParentMenuId":17,"ParentMenuId":"AdminRunTasks","IsActive":true},{"IntMenuId":106,"MenuId":"AdminRunImportPictures","Name":"Run Import Pictures","Description":"Imports patron pictures from file.","SortOrder":700740,"URL":"/Module/SDMS/Admin/RunPictureImport.aspx","IntParentMenuId":17,"ParentMenuId":"AdminRunTasks","IsActive":true},{"IntMenuId":56,"MenuId":"ReportList_Nurse","Name":"Nursing Reports","Description":"View nursing reports.","SortOrder":400040,"URL":"/Module/SDMS/ReportList.aspx?class=ReportNurse","IntParentMenuId":37,"ParentMenuId":"Reports_Main","IsActive":true},{"IntMenuId":44,"MenuId":"NurseFirstAid_Main","Name":"General First Aid","Description":"General First Aid","SortOrder":500100,"URL":"","IntParentMenuId":43,"ParentMenuId":"NurseTracking","IsActive":true},{"IntMenuId":45,"MenuId":"NurseMedication","Name":"Medication","Description":"Medication","SortOrder":500200,"URL":"","IntParentMenuId":43,"ParentMenuId":"NurseTracking","IsActive":true},{"IntMenuId":46,"MenuId":"NurseDiabeticCare","Name":"Diabetic Care","Description":"Diabetic Care","SortOrder":500300,"URL":"/Module/Nurse/ListVisits.aspx?VisitTypeId=Diabetic","IntParentMenuId":43,"ParentMenuId":"NurseTracking","IsActive":true},{"IntMenuId":47,"MenuId":"NurseNursing","Name":"Nursing Care","Description":"Nursing Care","SortOrder":500400,"URL":"/Module/Nurse/ListVisits.aspx?VisitTypeId=Nursing","IntParentMenuId":43,"ParentMenuId":"NurseTracking","IsActive":true},{"IntMenuId":48,"MenuId":"NurseOther","Name":"Other Visits","Description":"Other Visits","SortOrder":500500,"URL":"/Module/Nurse/ListVisits.aspx?VisitTypeId=Other","IntParentMenuId":43,"ParentMenuId":"NurseTracking","IsActive":true},{"IntMenuId":49,"MenuId":"NurseAll","Name":"All Visits","Description":"","SortOrder":500600,"URL":"/Module/Nurse/ListVisits.aspx","IntParentMenuId":43,"ParentMenuId":"NurseTracking","IsActive":true},{"IntMenuId":50,"MenuId":"NurseTriageSignIn","Name":"Triage Sign-In","Description":"Triage Sign-In","SortOrder":500110,"URL":"/Module/Nurse/SignIn.aspx","IntParentMenuId":44,"ParentMenuId":"NurseFirstAid_Main","IsActive":true},{"IntMenuId":51,"MenuId":"NurseTriage","Name":"Triage","Description":"Triage","SortOrder":500120,"URL":"/Module/Nurse/Triage.aspx","IntParentMenuId":44,"ParentMenuId":"NurseFirstAid_Main","IsActive":true},{"IntMenuId":52,"MenuId":"NurseFirstAid","Name":"First Aid Visits","Description":"First Aid Visits","SortOrder":500130,"URL":"/Module/Nurse/ListVisits.aspx?VisitTypeId=FirstAid","IntParentMenuId":44,"ParentMenuId":"NurseFirstAid_Main","IsActive":true},{"IntMenuId":53,"MenuId":"NurseMedicationVisits","Name":"Medication Visits","Description":"Medication Visits","SortOrder":500210,"URL":"/Module/Nurse/ListVisits.aspx?VisitTypeId=Medication","IntParentMenuId":45,"ParentMenuId":"NurseMedication","IsActive":true},{"IntMenuId":54,"MenuId":"NurseMedicationSched","Name":"Medication Schedules","Description":"Medication Schedules","SortOrder":500220,"URL":"/Module/Nurse/ListMedication.aspx","IntParentMenuId":45,"ParentMenuId":"NurseMedication","IsActive":true},{"IntMenuId":60,"MenuId":"STARS Instructor","Name":"Instructor","Description":"Instructor","SortOrder":601000,"URL":"","IntParentMenuId":59,"ParentMenuId":"STARS","IsActive":true},{"IntMenuId":66,"MenuId":"STARS StudentManagement","Name":"Student Management","Description":"Student Management","SortOrder":602000,"URL":"","IntParentMenuId":59,"ParentMenuId":"STARS","IsActive":true},{"IntMenuId":67,"MenuId":"STARS FundsManagement","Name":"Funds Management","Description":"Funds Management","SortOrder":603000,"URL":"","IntParentMenuId":59,"ParentMenuId":"STARS","IsActive":true},{"IntMenuId":69,"MenuId":"STARS Reports","Name":"Reports","Description":"Reports","SortOrder":605000,"URL":"/Module/SDMS/ReportList.aspx?class=ReportSTARS","IntParentMenuId":59,"ParentMenuId":"STARS","IsActive":true},{"IntMenuId":172,"MenuId":"STARS_Letters","Name":"Letters","Description":"Letters","SortOrder":605500,"URL":"","IntParentMenuId":59,"ParentMenuId":"STARS","IsActive":true},{"IntMenuId":70,"MenuId":"STARS Administration","Name":"Administration","Description":"Administration","SortOrder":606000,"URL":"","IntParentMenuId":59,"ParentMenuId":"STARS","IsActive":true},{"IntMenuId":243,"MenuId":"STARS InstructorDesktop","Name":"Desktop","Description":"Instructor Desktop default","SortOrder":606053,"URL":"/Module/STARS/Instructor/Desktop.aspx","IntParentMenuId":60,"ParentMenuId":"STARS Instructor","IsActive":true},{"IntMenuId":148,"MenuId":"STARS Student Information","Name":"Information","Description":"Edit Student InQuikAppsion","SortOrder":602010,"URL":"/Module/STARS/Student/StudentInformation.aspx","IntParentMenuId":66,"ParentMenuId":"STARS StudentManagement","IsActive":true},{"IntMenuId":158,"MenuId":"STARS Attendance Grades MGMT","Name":"Attendance","Description":"Attendance MGMT","SortOrder":602020,"URL":"/Module/STARS/Student/AttendanceMGMT.aspx","IntParentMenuId":66,"ParentMenuId":"STARS StudentManagement","IsActive":true},{"IntMenuId":68,"MenuId":"STARS Review Funds","Name":"Review Funds","Description":"Edit IFC Funds","SortOrder":603001,"URL":"/Module/STARS/Funds/ReviewFunds.aspx","IntParentMenuId":67,"ParentMenuId":"STARS FundsManagement","IsActive":true},{"IntMenuId":71,"MenuId":"STARS Program Management","Name":"Program Management","Description":"Program Management","SortOrder":606010,"URL":"","IntParentMenuId":70,"ParentMenuId":"STARS Administration","IsActive":true},{"IntMenuId":128,"MenuId":"STARS AccountingManagement","Name":"Accounting Management","Description":"Accounting Management","SortOrder":606030,"URL":"","IntParentMenuId":70,"ParentMenuId":"STARS Administration","IsActive":true},{"IntMenuId":129,"MenuId":"STARS GradeManagement","Name":"Grade Management","Description":"Grade Management","SortOrder":606040,"URL":"","IntParentMenuId":70,"ParentMenuId":"STARS Administration","IsActive":true},{"IntMenuId":144,"MenuId":"STARS SchoolManagement","Name":"School Management","Description":"School Management","SortOrder":606050,"URL":"","IntParentMenuId":70,"ParentMenuId":"STARS Administration","IsActive":true},{"IntMenuId":82,"MenuId":"STARS Configuration","Name":"Configuration","Description":"APS Configuration","SortOrder":606060,"URL":"/Module/STARS/Admin/Configuration.aspx","IntParentMenuId":70,"ParentMenuId":"STARS Administration","IsActive":true},{"IntMenuId":121,"MenuId":"STARS ProgramDefaultTables","Name":"Default Tables","Description":"Edit Program Default Tables","SortOrder":606011,"URL":"/Module/STARS/Admin/ProgramDefaultTables.aspx","IntParentMenuId":71,"ParentMenuId":"STARS Program Management","IsActive":true},{"IntMenuId":122,"MenuId":"STARS Departments","Name":"Departments","Description":"Edit Departments","SortOrder":606012,"URL":"/Module/STARS/Admin/Department.aspx","IntParentMenuId":71,"ParentMenuId":"STARS Program Management","IsActive":true},{"IntMenuId":123,"MenuId":"STARS Programs","Name":"Programs","Description":"Edit Programs","SortOrder":606013,"URL":"/Module/STARS/Admin/Program.aspx","IntParentMenuId":71,"ParentMenuId":"STARS Program Management","IsActive":true},{"IntMenuId":124,"MenuId":"STARS Awards","Name":"Awards","Description":"Edit Awards","SortOrder":606014,"URL":"/Module/STARS/Admin/Award.aspx","IntParentMenuId":71,"ParentMenuId":"STARS Program Management","IsActive":true},{"IntMenuId":133,"MenuId":"STARS Groupings","Name":"Groupings","Description":"Edit Groupings","SortOrder":606015,"URL":"/Module/STARS/Admin/Grouping.aspx","IntParentMenuId":71,"ParentMenuId":"STARS Program Management","IsActive":true},{"IntMenuId":125,"MenuId":"STARS Courses","Name":"Courses","Description":"Edit Courses","SortOrder":606016,"URL":"/Module/STARS/Admin/Course.aspx","IntParentMenuId":71,"ParentMenuId":"STARS Program Management","IsActive":true},{"IntMenuId":126,"MenuId":"STARS High School Course","Name":"High School Courses","Description":"Edit High School Courses","SortOrder":606017,"URL":"/Module/STARS/Admin/HSCourse.aspx","IntParentMenuId":71,"ParentMenuId":"STARS Program Management","IsActive":true},{"IntMenuId":127,"MenuId":"STARS Schedules","Name":"Schedules","Description":"Edit Schedules","SortOrder":606019,"URL":"/Module/STARS/Admin/Schedule.aspx","IntParentMenuId":71,"ParentMenuId":"STARS Program Management","IsActive":true},{"IntMenuId":87,"MenuId":"ClockIn","Name":"Clock In/Out","Description":"Clock In/Out","SortOrder":650100,"URL":"/Module/Timeclock/ClockIn.aspx","IntParentMenuId":86,"ParentMenuId":"Timeclock","IsActive":true},{"IntMenuId":88,"MenuId":"ViewTimesheet","Name":"View Timesheet","Description":"View and edit your timesheet.","SortOrder":650200,"URL":"/Module/Timeclock/Report/Timesheet.aspx","IntParentMenuId":86,"ParentMenuId":"Timeclock","IsActive":true},{"IntMenuId":89,"MenuId":"Manager","Name":"Manager","Description":"Timeclock manager","SortOrder":650300,"URL":"/Module/SDMS/ReportList.aspx?class=ReportTimekeeper","IntParentMenuId":86,"ParentMenuId":"Timeclock","IsActive":true},{"IntMenuId":94,"MenuId":"Administration","Name":"Administration","Description":"Timeclock administration","SortOrder":650400,"URL":"/Module/SDMS/ReportList.aspx?class=ReportTimekeeper","IntParentMenuId":86,"ParentMenuId":"Timeclock","IsActive":true},{"IntMenuId":90,"MenuId":"ManageTimesheets","Name":"Manage Timesheets","Description":"Manage Timesheets","SortOrder":650310,"URL":"/Module/Timeclock/ManageTimesheets.aspx","IntParentMenuId":89,"ParentMenuId":"Manager","IsActive":true},{"IntMenuId":92,"MenuId":"HolidayPay","Name":"Holiday Pay","Description":"Calculate Holiday Pay","SortOrder":650330,"URL":"/Module/Timeclock/PaidHoliday.aspx","IntParentMenuId":89,"ParentMenuId":"Manager","IsActive":true},{"IntMenuId":93,"MenuId":"Reports","Name":"Reports","Description":"Timeclock Reports","SortOrder":650340,"URL":"/Module/SDMS/ReportList.aspx?class=ReportTimekeeper","IntParentMenuId":89,"ParentMenuId":"Manager","IsActive":true},{"IntMenuId":95,"MenuId":"AdminEmployee","Name":"Employees","Description":"Edit Employee detail/Positions","SortOrder":650410,"URL":"/Module/Timeclock/Admin/Employee.aspx","IntParentMenuId":94,"ParentMenuId":"Administration","IsActive":true},{"IntMenuId":96,"MenuId":"AdminManager","Name":"Managers","Description":"Edit Employee Managers","SortOrder":650420,"URL":"/Module/Timeclock/Admin/Manager.aspx","IntParentMenuId":94,"ParentMenuId":"Administration","IsActive":true},{"IntMenuId":97,"MenuId":"AdminEditCodes","Name":"Positions, Pay, Job Acct Codes","Description":"Edit positions, pay, job and Acct codes.","SortOrder":650430,"URL":"/Module/Timeclock/Admin/EditCodes.aspx","IntParentMenuId":94,"ParentMenuId":"Administration","IsActive":true},{"IntMenuId":98,"MenuId":"AdminPayPeriods","Name":"Pay Periods","Description":"Manage pay periods.","SortOrder":650440,"URL":"/Module/Timeclock/Admin/PayPeriods.aspx","IntParentMenuId":94,"ParentMenuId":"Administration","IsActive":true},{"IntMenuId":100,"MenuId":"TimeclockConfig","Name":"General Configuration","Description":"General Configuration","SortOrder":650452,"URL":"/Module/Timeclock/Admin/Configuration.aspx","IntParentMenuId":99,"ParentMenuId":"TimeclockConfiguration","IsActive":true},{"IntMenuId":101,"MenuId":"TimeclockConfigImport","Name":"Configure Import/Export","Description":"Configure Import/Export","SortOrder":650454,"URL":"/Module/Timeclock/Admin/ConfigImportExport.aspx","IntParentMenuId":99,"ParentMenuId":"TimeclockConfiguration","IsActive":true},{"IntMenuId":108,"MenuId":"ICLAdministration","Name":"Administration","Description":"Default ICL Administration","SortOrder":660100,"URL":"/Module/ICL/Admin/Coach.aspx","IntParentMenuId":107,"ParentMenuId":"ICL","IsActive":true},{"IntMenuId":109,"MenuId":"ICLLog","Name":"Log","Description":"Log Entry","SortOrder":660110,"URL":"/Module/ICL/Log.aspx","IntParentMenuId":107,"ParentMenuId":"ICL","IsActive":true},{"IntMenuId":178,"MenuId":"ICL_Letters","Name":"Letters","Description":"Letters","SortOrder":660120,"URL":"","IntParentMenuId":107,"ParentMenuId":"ICL","IsActive":true},{"IntMenuId":337,"MenuId":"QSPMGR_AccountManagement","Name":"Account Management","Description":"Account Management","SortOrder":667400,"URL":"/Module/QSP/AccountManagement.aspx","IntParentMenuId":111,"ParentMenuId":"QSPMgr","IsActive":true},{"IntMenuId":340,"MenuId":"QSPMGR_AccountChargeback","Name":"Account Chargeback","Description":"Account Chargeback","SortOrder":667405,"URL":"/Module/QSP/AccountChargeback.aspx","IntParentMenuId":111,"ParentMenuId":"QSPMgr","IsActive":true},{"IntMenuId":254,"MenuId":"QSPMGR_DrawerManagement","Name":"Drawers","Description":"Drawer Management","SortOrder":667578,"URL":"/Module/QSP/DrawerManagement.aspx","IntParentMenuId":111,"ParentMenuId":"QSPMgr","IsActive":true},{"IntMenuId":263,"MenuId":"QSPMGR_Transactions","Name":"Transactions","Description":"Transactions","SortOrder":667579,"URL":"","IntParentMenuId":111,"ParentMenuId":"QSPMgr","IsActive":true},{"IntMenuId":231,"MenuId":"QSPMGR_Download","Name":"Download Software","Description":"Download Software","SortOrder":667580,"URL":"/Module/QSP/ClientDownload.aspx","IntParentMenuId":111,"ParentMenuId":"QSPMgr","IsActive":true},{"IntMenuId":245,"MenuId":"QSPMGR_EXPORT","Name":"Exports","Description":"Exports","SortOrder":667600,"URL":"","IntParentMenuId":111,"ParentMenuId":"QSPMgr","IsActive":true},{"IntMenuId":511,"MenuId":"QSPMGR_PO_IMPORTS","Name":"Imports","Description":"Preorder Imports","SortOrder":667605,"URL":"/Module/QSP/PO_ImportItems.aspx","IntParentMenuId":111,"ParentMenuId":"QSPMgr","IsActive":true},{"IntMenuId":257,"MenuId":"QSPMGR_Administration","Name":"Administration","Description":"QuikLunch Administration Tasks","SortOrder":667610,"URL":"","IntParentMenuId":111,"ParentMenuId":"QSPMgr","IsActive":true},{"IntMenuId":285,"MenuId":"QSPMGR_SalesTax","Name":"Sales Tax","Description":"Sales Tax","SortOrder":667611,"URL":"/Module/QSP/SalesTaxManagement.aspx","IntParentMenuId":111,"ParentMenuId":"QSPMgr","IsActive":true},{"IntMenuId":260,"MenuId":"QSPMGR_DailyStatistics","Name":"Daily Statistics","Description":"QuikLunch Daily Statistics","SortOrder":667620,"URL":"","IntParentMenuId":111,"ParentMenuId":"QSPMgr","IsActive":true},{"IntMenuId":282,"MenuId":"QSPMGR_ProvisionFeeding","Name":"Provisional Feeding","Description":"Provisional Feeding","SortOrder":667620,"URL":"","IntParentMenuId":111,"ParentMenuId":"QSPMgr","IsActive":true},{"IntMenuId":299,"MenuId":"QSPMGR_VendingManagement","Name":"Vending Management","Description":"Vending Management","SortOrder":667650,"URL":"","IntParentMenuId":111,"ParentMenuId":"QSPMgr","IsActive":true},{"IntMenuId":328,"MenuId":"Reports_QSP_LowBalanceLetters","Name":"Low Balance Letters","Description":"Low Balance Letters","SortOrder":700000,"URL":"/Module/SDMS/Letters/LetterGenerator.aspx","IntParentMenuId":111,"ParentMenuId":"QSPMgr","IsActive":true},{"IntMenuId":512,"MenuId":"QSPMGR_PO_MEALS_BULKSALE","Name":"Preorder Meals","Description":"Preorder Meals","SortOrder":700100,"URL":"/Module/QSP/PO_BulkSales.aspx","IntParentMenuId":111,"ParentMenuId":"QSPMgr","IsActive":true},{"IntMenuId":115,"MenuId":"PFI_Payments","Name":"PASS","Description":"Make PFI Payments","SortOrder":640100,"URL":"/Module/PFI/Payments.aspx","IntParentMenuId":114,"ParentMenuId":"PFI","IsActive":true},{"IntMenuId":214,"MenuId":"PFI_BatchPayments","Name":"Batch Payments","Description":"Make Batch Payments from Patron Accounts","SortOrder":640150,"URL":"/Module/PFI/BatchPayments.aspx","IntParentMenuId":114,"ParentMenuId":"PFI","IsActive":true},{"IntMenuId":116,"MenuId":"PFI_CloseDrawer","Name":"Close Drawer","Description":"Close Any Drawer","SortOrder":640200,"URL":"/Module/PFI/CloseDrawer.aspx","IntParentMenuId":114,"ParentMenuId":"PFI","IsActive":true},{"IntMenuId":166,"MenuId":"PFI_CloseMasterDrawer","Name":"Close Master Drawer","Description":"Close Master Drawer","SortOrder":640300,"URL":"/Module/PFI/CloseMasterDrawer.aspx","IntParentMenuId":114,"ParentMenuId":"PFI","IsActive":true},{"IntMenuId":161,"MenuId":"PFI_DrawersInformation","Name":"Drawer Information","Description":"Enhanced View Drawers.","SortOrder":640600,"URL":"/Module/PFI/DrawersInformation.aspx","IntParentMenuId":114,"ParentMenuId":"PFI","IsActive":true},{"IntMenuId":167,"MenuId":"PFI_MasterDrawerInformation","Name":"Master Drawer Information","Description":"Master Drawer InQuikAppsion","SortOrder":640650,"URL":"/Module/PFI/MasterDrawerInformation.aspx","IntParentMenuId":114,"ParentMenuId":"PFI","IsActive":true},{"IntMenuId":153,"MenuId":"PFI_Admin","Name":"Administration","Description":"PFI Administration of fees and configuration","SortOrder":640700,"URL":"","IntParentMenuId":114,"ParentMenuId":"PFI","IsActive":true},{"IntMenuId":168,"MenuId":"PFI_FundsManagment","Name":"Account Management","Description":"Account Management","SortOrder":640800,"URL":"","IntParentMenuId":114,"ParentMenuId":"PFI","IsActive":true},{"IntMenuId":477,"MenuId":"Reports_PFI_OutstandingFees","Name":"Fee Letters","Description":"Fee Letters","SortOrder":700000,"URL":"/Module/SDMS/Letters/LetterGenerator.aspx?moduleid=PFI","IntParentMenuId":114,"ParentMenuId":"PFI","IsActive":true},{"IntMenuId":75,"MenuId":"STARS Fees","Name":"Fees Management","Description":"Fees Management","SortOrder":606054,"URL":"/Module/STARS/Admin/Fee.aspx","IntParentMenuId":128,"ParentMenuId":"STARS AccountingManagement","IsActive":true},{"IntMenuId":76,"MenuId":"STARS Budget Management","Name":"Budget Management","Description":"Budget Management","SortOrder":606055,"URL":"/Module/STARS/Admin/Budgets.aspx","IntParentMenuId":128,"ParentMenuId":"STARS AccountingManagement","IsActive":true},{"IntMenuId":79,"MenuId":"STARS Grading Scale","Name":"Grading Scale","Description":"Edit Grading Scale","SortOrder":606041,"URL":"/Module/STARS/Admin/GradingScale.aspx","IntParentMenuId":129,"ParentMenuId":"STARS GradeManagement","IsActive":true},{"IntMenuId":146,"MenuId":"STARS AssignmentCategories","Name":"Assignment Categories","Description":"Edit Assignment Categories.","SortOrder":606043,"URL":"/Module/STARS/Admin/AssignmentCategory.aspx","IntParentMenuId":129,"ParentMenuId":"STARS GradeManagement","IsActive":true},{"IntMenuId":140,"MenuId":"AdminUtil_ZeroBalance","Name":"Zero Patron Balances","Description":"Zero out negative patron balances for Free and Reduced patrons.","SortOrder":700575,"URL":"/Module/ESDMS/Admin/ZeroBalances.aspx","IntParentMenuId":139,"ParentMenuId":"AdminUtil","IsActive":true},{"IntMenuId":159,"MenuId":"AdminUtil_DuplicatePin","Name":"Edit Duplicate Pin Numbers","Description":"Edit Duplicate Pin Numbers","SortOrder":700576,"URL":"/Module/SDMS/Tools/DuplicatePin.aspx","IntParentMenuId":139,"ParentMenuId":"AdminUtil","IsActive":true},{"IntMenuId":279,"MenuId":"AdminUtil_DropSchoolLocks","Name":"Drop Locks","Description":"Drop Locks from PatronSchool.","SortOrder":700578,"URL":"/Module/SDMS/Admin/DropSchoolLocks.aspx","IntParentMenuId":139,"ParentMenuId":"AdminUtil","IsActive":true},{"IntMenuId":474,"MenuId":"ReportBatchConfiguration","Name":"Configure Report Batches","Description":"Configure Report Batches","SortOrder":700579,"URL":"/Module/SDMS/Admin/ConfigureReportBatch.aspx","IntParentMenuId":139,"ParentMenuId":"AdminUtil","IsActive":true},{"IntMenuId":475,"MenuId":"RunReportBatch","Name":"Run Report Batch","Description":"Run Report Batch","SortOrder":700580,"URL":"/Module/SDMS/Admin/RunReportBatch.aspx","IntParentMenuId":139,"ParentMenuId":"AdminUtil","IsActive":true},{"IntMenuId":73,"MenuId":"STARS School Year","Name":"School Year/Term","Description":"Edit School Year/Term","SortOrder":606051,"URL":"/Module/STARS/Admin/SchoolYearTerm.aspx","IntParentMenuId":144,"ParentMenuId":"STARS SchoolManagement","IsActive":true},{"IntMenuId":149,"MenuId":"STARS RegistrationDefaultTables","Name":"Registration Default Tables","Description":"Edit Registration Default Tables","SortOrder":606053,"URL":"/Module/STARS/Admin/RegistrationDefaultTables.aspx","IntParentMenuId":144,"ParentMenuId":"STARS SchoolManagement","IsActive":true},{"IntMenuId":220,"MenuId":"STARS AttendanceDefaultTables","Name":"Attendance Default Tables","Description":"Edit Attendance Default Tables","SortOrder":606053,"URL":"/Module/STARS/Admin/AttendanceDefaultTables.aspx","IntParentMenuId":144,"ParentMenuId":"STARS SchoolManagement","IsActive":true},{"IntMenuId":117,"MenuId":"PFI_ManageFees","Name":"Manage Fees","Description":"Manage Fees","SortOrder":640720,"URL":"/v2?route=viewfee","IntParentMenuId":153,"ParentMenuId":"PFI_Admin","IsActive":true},{"IntMenuId":249,"MenuId":"PFI_MaxCharges","Name":"Manage Max Charge Groups","Description":"Manage Max Charge Groups for Family and Student.","SortOrder":640721,"URL":"/Module/PFI/ManageMaxCharges.aspx","IntParentMenuId":153,"ParentMenuId":"PFI_Admin","IsActive":true},{"IntMenuId":194,"MenuId":"PFI_ManageFeeTypes","Name":"Manage Fee Types","Description":"Manage Fee Types","SortOrder":640722,"URL":"/Module/PFI/ManageFeeTypes.aspx","IntParentMenuId":153,"ParentMenuId":"PFI_Admin","IsActive":true},{"IntMenuId":493,"MenuId":"PFI_ManageFeeCategories","Name":"Manage Fee Categories","Description":"Manage Fee Categories","SortOrder":640723,"URL":"/Module/PFI/ManageFeeCategories.aspx","IntParentMenuId":153,"ParentMenuId":"PFI_Admin","IsActive":true},{"IntMenuId":514,"MenuId":"PFI_ManageSessions","Name":"Manage Sessions","Description":"Add/Edit Sessions","SortOrder":640724,"URL":"/v2?route=viewsession","IntParentMenuId":153,"ParentMenuId":"PFI_Admin","IsActive":true},{"IntMenuId":517,"MenuId":"PFI_ManageSessionCategory","Name":"Manage Session Categories","Description":"Add/Edit Sessions","SortOrder":640725,"URL":"/v2?route=viewsessioncategory","IntParentMenuId":153,"ParentMenuId":"PFI_Admin","IsActive":true},{"IntMenuId":240,"MenuId":"PFI_AssignFees","Name":"Assign Fees","Description":"Assign Fees to Patrons.","SortOrder":640726,"URL":"/Module/PFI/AssignFees.aspx","IntParentMenuId":153,"ParentMenuId":"PFI_Admin","IsActive":true},{"IntMenuId":192,"MenuId":"PFI_GLSegments","Name":"GL Segments","Description":"Edit GL Delimiter and Segment Lengths.","SortOrder":640727,"URL":"/Module/PFI/GLSegments.aspx","IntParentMenuId":153,"ParentMenuId":"PFI_Admin","IsActive":true},{"IntMenuId":154,"MenuId":"PFI_GLAccounts","Name":"GL Accounts","Description":"Management of GL Accounts.","SortOrder":640730,"URL":"/Module/PFI/GLAccounts.aspx","IntParentMenuId":153,"ParentMenuId":"PFI_Admin","IsActive":true},{"IntMenuId":162,"MenuId":"PFI_GLSchoolDetails","Name":"School GL Accounts","Description":"Assign GL accounts by school.","SortOrder":640750,"URL":"/Module/PFI/SchoolDetails.aspx","IntParentMenuId":153,"ParentMenuId":"PFI_Admin","IsActive":true},{"IntMenuId":170,"MenuId":"PFI_MerchantGLAccounts","Name":"Merchant GL Accounts","Description":"Attach GL Accounts to Merchant Fees","SortOrder":640755,"URL":"/Module/PFI/MerchantGLAccounts.aspx","IntParentMenuId":153,"ParentMenuId":"PFI_Admin","IsActive":true},{"IntMenuId":120,"MenuId":"PFI_Config","Name":"Configuration","Description":"PFI Configuration","SortOrder":640760,"URL":"/Module/PFI/Configuration.aspx","IntParentMenuId":153,"ParentMenuId":"PFI_Admin","IsActive":true},{"IntMenuId":163,"MenuId":"PFI_DriverDownload","Name":"Download Drivers","Description":"Download drivers for printers and other PFI devices.","SortOrder":640770,"URL":"/Module/SDMS/FileDownload.aspx?ModuleId=PFI","IntParentMenuId":153,"ParentMenuId":"PFI_Admin","IsActive":true},{"IntMenuId":169,"MenuId":"PFI_ManageFunds","Name":"Manage Source Accounts","Description":"Manage Source Accounts","SortOrder":640810,"URL":"/Module/PFI/ManageFunds.aspx","IntParentMenuId":168,"ParentMenuId":"PFI_FundsManagment","IsActive":true},{"IntMenuId":173,"MenuId":"STARS_LettersBuild","Name":"Build Letters","Description":"Build Letters","SortOrder":605510,"URL":"/Module/SDMS/Letters/LettersBuild.aspx?ModuleId=STARS","IntParentMenuId":172,"ParentMenuId":"STARS_Letters","IsActive":true},{"IntMenuId":174,"MenuId":"STARS_LettersRun","Name":"Run Letters","Description":"Run Letters","SortOrder":605520,"URL":"/Module/SDMS/Letters/LettersPreRun.aspx?ModuleId=STARS","IntParentMenuId":172,"ParentMenuId":"STARS_Letters","IsActive":true},{"IntMenuId":179,"MenuId":"ICL_LettersBuild","Name":"Build Letters","Description":"Build Letters","SortOrder":660122,"URL":"/Module/SDMS/Letters/LettersBuild.aspx?ModuleId=ICL","IntParentMenuId":178,"ParentMenuId":"ICL_Letters","IsActive":true},{"IntMenuId":180,"MenuId":"ICL_LettersRun","Name":"Run Letters","Description":"Run Letters","SortOrder":660124,"URL":"/Module/SDMS/Letters/LettersPreRun.aspx?ModuleId=ICL","IntParentMenuId":178,"ParentMenuId":"ICL_Letters","IsActive":true},{"IntMenuId":333,"MenuId":"ManageLetters","Name":"Manage Letters","Description":"Manage Letters","SortOrder":10090,"URL":"/Module/SDMS/Admin/ManageLetters.aspx","IntParentMenuId":184,"ParentMenuId":"Admin_Letters","IsActive":true},{"IntMenuId":185,"MenuId":"Admin_LettersCriteria","Name":"Edit Criteria","Description":"Edit Criteria","SortOrder":700552,"URL":"/Module/SDMS/Letters/LettersCriteria.aspx","IntParentMenuId":184,"ParentMenuId":"Admin_Letters","IsActive":true},{"IntMenuId":186,"MenuId":"Admin_LettersTags","Name":"Edit Tags","Description":"Edit Tags","SortOrder":700554,"URL":"/Module/SDMS/Letters/LettersTags.aspx","IntParentMenuId":184,"ParentMenuId":"Admin_Letters","IsActive":true},{"IntMenuId":294,"MenuId":"Export_PearsExport","Name":"Pears Export","Description":"Run Pears Export","SortOrder":667621,"URL":"/Module/QSP/PearsExport.aspx","IntParentMenuId":245,"ParentMenuId":"QSPMGR_EXPORT","IsActive":true},{"IntMenuId":300,"MenuId":"Export_AramarkExport","Name":"Aramark Export","Description":"Run Aramark Export","SortOrder":667651,"URL":"/Module/QSP/AramarkExport.aspx","IntParentMenuId":245,"ParentMenuId":"QSPMGR_EXPORT","IsActive":true},{"IntMenuId":504,"MenuId":"Export_SodexoExport","Name":"Sodexo Export","Description":"Run Sodexo Export","SortOrder":667681,"URL":"/Module/QSP/SodexoExport.aspx","IntParentMenuId":245,"ParentMenuId":"QSPMGR_EXPORT","IsActive":true},{"IntMenuId":246,"MenuId":"QSPMGR_EXPORT_GLPOSTINGS","Name":"GL Postings","Description":"GL Postings","SortOrder":668800,"URL":"/Module/QSP/ExportProcesses/ExportGLPosting.aspx","IntParentMenuId":245,"ParentMenuId":"QSPMGR_EXPORT","IsActive":true},{"IntMenuId":444,"MenuId":"Export_CDEPOSExport","Name":"Site Claim Export","Description":"Run Site Claim Export","SortOrder":700001,"URL":"/Module/QSP/ExportProcesses/CDEPOSExport.aspx","IntParentMenuId":245,"ParentMenuId":"QSPMGR_EXPORT","IsActive":true},{"IntMenuId":237,"MenuId":"QSPMGR_ItemManagement","Name":"Items","Description":"Item Management","SortOrder":667520,"URL":"/Module/QSP/ItemManagement.aspx","IntParentMenuId":257,"ParentMenuId":"QSPMGR_Administration","IsActive":true},{"IntMenuId":233,"MenuId":"QSPMGR_LayoutManagement","Name":"Button Layouts","Description":"Layout Management","SortOrder":667530,"URL":"/Module/QSP/LayoutManagement.aspx","IntParentMenuId":257,"ParentMenuId":"QSPMGR_Administration","IsActive":true},{"IntMenuId":228,"MenuId":"QSPMGR_PatronTypes","Name":"Patron Types","Description":"Patron Types","SortOrder":667560,"URL":"/Module/QSP/PatronTypeManagement.aspx","IntParentMenuId":257,"ParentMenuId":"QSPMGR_Administration","IsActive":true},{"IntMenuId":482,"MenuId":"QSPMGR_MealTypes","Name":"Meal Types","Description":"Meal Types","SortOrder":667565,"URL":"/Module/QSP/MealTypes.aspx","IntParentMenuId":257,"ParentMenuId":"QSPMGR_Administration","IsActive":true},{"IntMenuId":229,"MenuId":"QSPMGR_MealPeriods","Name":"Meal Periods","Description":"Meal Periods","SortOrder":667570,"URL":"/Module/QSP/MealPeriods.aspx","IntParentMenuId":257,"ParentMenuId":"QSPMGR_Administration","IsActive":true},{"IntMenuId":488,"MenuId":"QLMGR_MealPlanManagement","Name":"Meal Plan Management","Description":"Meal Plan Management","SortOrder":667571,"URL":"/Module/QSP/MealPlanManagement.aspx","IntParentMenuId":257,"ParentMenuId":"QSPMGR_Administration","IsActive":true},{"IntMenuId":235,"MenuId":"QSPMGR_ChargeLimits","Name":"Charge Limits","Description":"Charge Limits","SortOrder":667572,"URL":"/Module/QSP/ChargeLimitsEdit.aspx","IntParentMenuId":257,"ParentMenuId":"QSPMGR_Administration","IsActive":true},{"IntMenuId":255,"MenuId":"QSPMGR_TerminalManagement","Name":"Terminals","Description":"Terminal Management","SortOrder":667577,"URL":"/Module/QSP/TerminalManagement.aspx","IntParentMenuId":257,"ParentMenuId":"QSPMGR_Administration","IsActive":true},{"IntMenuId":227,"MenuId":"QSPMGR_ReimAgencies","Name":"Reimbursement Agencies","Description":"Reimbursement Agencies","SortOrder":667579,"URL":"/Module/QSP/ReimbAgenciesManagement.aspx","IntParentMenuId":257,"ParentMenuId":"QSPMGR_Administration","IsActive":true},{"IntMenuId":248,"MenuId":"QSPMGR_Options","Name":"Options","Description":"Options","SortOrder":667605,"URL":"/Module/QSP/Options.aspx","IntParentMenuId":257,"ParentMenuId":"QSPMGR_Administration","IsActive":true},{"IntMenuId":344,"MenuId":"QSPMGR_RosterManagement","Name":"Rosters","Description":"Roster Management","SortOrder":667607,"URL":"/Module/QSP/RosterManagement.aspx","IntParentMenuId":257,"ParentMenuId":"QSPMGR_Administration","IsActive":true},{"IntMenuId":259,"MenuId":"QSPMGR_SchoolProperties","Name":"School Properties","Description":"School Properties","SortOrder":667610,"URL":"/Module/QSP/SchoolProperties.aspx","IntParentMenuId":257,"ParentMenuId":"QSPMGR_Administration","IsActive":true},{"IntMenuId":330,"MenuId":"QSPMGR_BonusRules","Name":"Bonus Rules","Description":"Edit BonusRules","SortOrder":667700,"URL":"/Module/QSP/BonusRules.aspx","IntParentMenuId":257,"ParentMenuId":"QSPMGR_Administration","IsActive":true},{"IntMenuId":484,"MenuId":"QSPMGR_SchemaManagement","Name":"Distribution Management","Description":"Distribution Management","SortOrder":667800,"URL":"/Module/QSP/SchemaManagement.aspx","IntParentMenuId":257,"ParentMenuId":"QSPMGR_Administration","IsActive":true},{"IntMenuId":262,"MenuId":"QSPMGR_ViewDailyStats","Name":"View Statistics","Description":"View QuikLunch Daily Statistics","SortOrder":100000,"URL":"/Module/QSP/ViewDailyStatistics.aspx","IntParentMenuId":260,"ParentMenuId":"QSPMGR_DailyStatistics","IsActive":true},{"IntMenuId":261,"MenuId":"QSPMGR_EnterDailyStats","Name":"Enter Statistics","Description":"Enter QuikLunch Daily Statistics","SortOrder":101000,"URL":"/Module/QSP/EnterDailyStatistics.aspx","IntParentMenuId":260,"ParentMenuId":"QSPMGR_DailyStatistics","IsActive":true},{"IntMenuId":264,"MenuId":"QSPMGR_TransactionsVoid","Name":"View/Void Transactions","Description":"Transactions","SortOrder":672260,"URL":"/Module/QSP/TransactionsVoid.aspx","IntParentMenuId":263,"ParentMenuId":"QSPMGR_Transactions","IsActive":true},{"IntMenuId":283,"MenuId":"QSPMGR_ProvisionII","Name":"PROV II","Description":"PROV II","SortOrder":100,"URL":"/Module/QSP/Provision_II.aspx","IntParentMenuId":282,"ParentMenuId":"QSPMGR_ProvisionFeeding","IsActive":true},{"IntMenuId":284,"MenuId":"QSPMGR_ProvisionCEO","Name":"PROV CEO","Description":"PROV CEO","SortOrder":200,"URL":"/Module/QSP/Provision_CEO.aspx","IntParentMenuId":282,"ParentMenuId":"QSPMGR_ProvisionFeeding","IsActive":true},{"IntMenuId":510,"MenuId":"QSPMGR_STAR_FOODS","Name":"Vending Machine Setup","Description":"Vending Machine Setup","SortOrder":667551,"URL":"/Module/QSP/VendingManagement.aspx","IntParentMenuId":299,"ParentMenuId":"QSPMGR_VendingManagement","IsActive":true},{"IntMenuId":508,"MenuId":"QSPMGR_VS_VendingSetup","Name":"VendNovation Options","Description":"VendNovation Options","SortOrder":667651,"URL":"/Module/QSP/VendingSetup.aspx","IntParentMenuId":299,"ParentMenuId":"QSPMGR_VendingManagement","IsActive":true},{"IntMenuId":509,"MenuId":"QSPMGR_VS_ExportQLItems","Name":"Export QL Items","Description":"Export QL Items","SortOrder":667651,"URL":"/Module/QSP/ExportQLItems.aspx","IntParentMenuId":299,"ParentMenuId":"QSPMGR_VendingManagement","IsActive":true},{"IntMenuId":485,"MenuId":"FR_FormsManagement","Name":"Forms Management","Description":"Forms Management","SortOrder":555001,"URL":"/Module/Forms/Forms.aspx","IntParentMenuId":467,"ParentMenuId":"FR_Forms","IsActive":true},{"IntMenuId":486,"MenuId":"FR_PendingApplications","Name":"Pending Applications","Description":"Pending Applications Management","SortOrder":555002,"URL":"/Module/Forms/FormsPendingApplications.aspx","IntParentMenuId":467,"ParentMenuId":"FR_Forms","IsActive":true},{"IntMenuId":516,"MenuId":"DBS_BackOffice","Name":"DBS Back Office","Description":"DBS Back Office","SortOrder":670100,"URL":"/Module/Inventory/DBSBackOffice_SignOn.aspx","IntParentMenuId":515,"ParentMenuId":"Inventory","IsActive":true},{"IntMenuId":518,"MenuId":"PFI_FeeReports","Name":"Fee Reports","Description":"Fee Reports","SortOrder":800000,"URL":"","IntParentMenuId":114,"ParentMenuId":"PFI","IsActive":true},{"IntMenuId":519,"MenuId":"ARPT_Fee_Payment_Report","Name":"Fee Payments","Description":"Fee Payment Report","SortOrder":800100,"URL":"/v2?route=fee-payment-report","IntParentMenuId":518,"ParentMenuId":"PFI_FeeReports","IsActive":true},{"IntMenuId":520,"MenuId":"ARPT_Fee_Details_Report","Name":"Fee Details","Description":"Fee Details Report","SortOrder":800200,"URL":"/v2?route=fee-details-report","IntParentMenuId":518,"ParentMenuId":"PFI_FeeReports","IsActive":true},{"IntMenuId":521,"MenuId":"ARPT_Daily_General_Ledger_Report","Name":"General Ledger","Description":"Daily/Date range General Ledger Report","SortOrder":800300,"URL":"/v2?route=general-ledger-report","IntParentMenuId":518,"ParentMenuId":"PFI_FeeReports","IsActive":true},{"IntMenuId":523,"MenuId":"ARPT_Fees_With_GL_Accounts_Report","Name":"Fees GL Accounts","Description":"Fees With/Without GL Accounts Report","SortOrder":800500,"URL":"/v2?route=fee-general-ledger-report","IntParentMenuId":518,"ParentMenuId":"PFI_FeeReports","IsActive":true},{"IntMenuId":525,"MenuId":"ARPT_Daily_Transaction_Report","Name":"Daily Transaction","Description":"Daily Transaction Report","SortOrder":800700,"URL":"/v2?route=daily-transaction-report","IntParentMenuId":518,"ParentMenuId":"PFI_FeeReports","IsActive":true},{"IntMenuId":1003,"MenuId":"ARPT_Deposit_Batch_Report","Name":"Deposit Batch","Description":"Deposit Batch Report","SortOrder":800901,"URL":"/v2?route=deposit-batch-report","IntParentMenuId":8109,"ParentMenuId":"PFI_FeeReports","IsActive":true},{"IntMenuId":1002,"MenuId":"ARPT_Batch_Summary_Report","Name":"Batch Summary","Description":"Batch Summary Report","SortOrder":800900,"URL":"/v2?route=batch-summary-report","IntParentMenuId":799,"ParentMenuId":"PFI_FeeReports","IsActive":true}]</msg>
-<status status="PASS" starttime="20221118 14:22:02.263" endtime="20221118 14:22:02.263"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>${response.status_code}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20221118 14:22:02.263" level="INFO">200</msg>
-<status status="PASS" starttime="20221118 14:22:02.263" endtime="20221118 14:22:02.263"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>${response.headers}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20221118 14:22:02.263" level="INFO">{'Date': 'Fri, 18 Nov 2022 08:52:02 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'RequestId': '32e84283-1831-43f9-9c6a-37543fb815fc', 'X-Powered-By': 'ASP.NET', 'CF-Cache-Status': 'DYNAMIC', 'Server': 'cloudflare', 'CF-RAY': '76bf77b31ac56ec2-BOM', 'Content-Encoding': 'gzip'}</msg>
-<status status="PASS" starttime="20221118 14:22:02.263" endtime="20221118 14:22:02.263"/>
-</kw>
-<status status="PASS" starttime="20221118 14:21:59.966" endtime="20221118 14:22:02.263"/>
-</test>
-<test id="s1-t4" name="Get All Active Schools" line="43">
-<kw name="Create Session" library="RequestsLibrary">
-<arg>mysession</arg>
-<arg>${base_url}</arg>
-<doc>Create Session: create a HTTP session to a server</doc>
-<msg timestamp="20221118 14:22:02.263" level="INFO">Creating Session using : alias=mysession, url=https://alpha4-api.payschools.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<status status="PASS" starttime="20221118 14:22:02.263" endtime="20221118 14:22:02.263"/>
-</kw>
-<kw name="Create Dictionary" library="BuiltIn">
-<var>${headers}</var>
-<arg>Content-Type=application/json</arg>
-<arg>Authorization=${token}</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20221118 14:22:02.263" level="INFO">${headers} = {'Content-Type': 'application/json', 'Authorization': 'Token c71fbe779ffd4e8ca4125f460e590f81nOPI659mzU143IIbj0Yit'}</msg>
-<status status="PASS" starttime="20221118 14:22:02.263" endtime="20221118 14:22:02.263"/>
-</kw>
-<kw name="GET On Session" library="RequestsLibrary">
-<var>${response}</var>
-<arg>mysession</arg>
-<arg>/v2/public/school/All/Active</arg>
-<arg>headers=${headers}</arg>
-<doc>Sends a GET request on a previously created HTTP Session.</doc>
-<msg timestamp="20221118 14:22:03.722" level="INFO">GET Request : url=https://alpha4-api.payschools.com/v2/public/school/All/Active 
- path_url=/v2/public/school/All/Active 
- headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Authorization': 'Token c71fbe779ffd4e8ca4125f460e590f81nOPI659mzU143IIbj0Yit'} 
- body=None 
- </msg>
-<msg timestamp="20221118 14:22:03.722" level="INFO">GET Response : url=https://alpha4-api.payschools.com/v2/public/school/All/Active 
- status=501, reason=Not Implemented 
- headers={'Date': 'Fri, 18 Nov 2022 08:52:04 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'RequestId': 'e2ef7b18-6508-4282-9f5e-3b4d6aacf7ee', 'X-Powered-By': 'ASP.NET', 'CF-Cache-Status': 'DYNAMIC', 'Server': 'cloudflare', 'CF-RAY': '76bf77c08fc1319a-BOM'} 
- body=[{"UserMessage":"Not Implemented","InternalMessage":"Url /v2/public/school/All/Active not found","Code":"","PropertyName":"","LogId":""}] 
- </msg>
-<msg timestamp="20221118 14:22:03.737" level="INFO">C:\Users\SatishKumar\PycharmProjects\API_Automation\venv\lib\site-packages\urllib3\connectionpool.py:1045: InsecureRequestWarning: Unverified HTTPS request is being made to host 'alpha4-api.payschools.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
-  warnings.warn(</msg>
-<msg timestamp="20221118 14:22:03.737" level="FAIL">HTTPError: 501 Server Error: Not Implemented for url: https://alpha4-api.payschools.com/v2/public/school/All/Active</msg>
-<status status="FAIL" starttime="20221118 14:22:02.263" endtime="20221118 14:22:03.737"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>${response.content}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" starttime="20221118 14:22:03.737" endtime="20221118 14:22:03.737"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>${response.status_code}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" starttime="20221118 14:22:03.737" endtime="20221118 14:22:03.737"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>${response.headers}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" starttime="20221118 14:22:03.737" endtime="20221118 14:22:03.737"/>
-</kw>
-<status status="FAIL" starttime="20221118 14:22:02.263" endtime="20221118 14:22:03.737">HTTPError: 501 Server Error: Not Implemented for url: https://alpha4-api.payschools.com/v2/public/school/All/Active</status>
-</test>
-<test id="s1-t5" name="Get all schools" line="51">
-<kw name="Create Session" library="RequestsLibrary">
-<arg>mysession</arg>
-<arg>${base_url}</arg>
-<doc>Create Session: create a HTTP session to a server</doc>
-<msg timestamp="20221118 14:22:03.737" level="INFO">Creating Session using : alias=mysession, url=https://alpha4-api.payschools.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<status status="PASS" starttime="20221118 14:22:03.737" endtime="20221118 14:22:03.737"/>
-</kw>
-<kw name="Create Dictionary" library="BuiltIn">
-<var>${headers}</var>
-<arg>Content-Type=application/json</arg>
-<arg>Authorization=${token}</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20221118 14:22:03.753" level="INFO">${headers} = {'Content-Type': 'application/json', 'Authorization': 'Token c71fbe779ffd4e8ca4125f460e590f81nOPI659mzU143IIbj0Yit'}</msg>
-<status status="PASS" starttime="20221118 14:22:03.753" endtime="20221118 14:22:03.753"/>
-</kw>
-<kw name="GET On Session" library="RequestsLibrary">
-<var>${response}</var>
-<arg>mysession</arg>
-<arg>/v2/public/school</arg>
-<arg>headers=${headers}</arg>
-<doc>Sends a GET request on a previously created HTTP Session.</doc>
-<msg timestamp="20221118 14:22:05.273" level="INFO">GET Request : url=https://alpha4-api.payschools.com/v2/public/school 
- path_url=/v2/public/school 
- headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Authorization': 'Token c71fbe779ffd4e8ca4125f460e590f81nOPI659mzU143IIbj0Yit'} 
- body=None 
- </msg>
-<msg timestamp="20221118 14:22:05.273" level="INFO">GET Response : url=https://alpha4-api.payschools.com/v2/public/school 
- status=200, reason=OK 
- headers={'Date': 'Fri, 18 Nov 2022 08:52:05 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'RequestId': 'c90070fe-bd44-4c3e-92b8-04b1c4db2555', 'X-Powered-By': 'ASP.NET', 'CF-Cache-Status': 'DYNAMIC', 'Server': 'cloudflare', 'CF-RAY': '76bf77c9bc12f419-BOM', 'Content-Encoding': 'gzip'} 
- body=[{"SchoolId":20,"IntDistrictId":3,"SchoolName":"Old Orchard Elementary","IsActive":true},{"SchoolId":21,"IntDistrictId":3,"SchoolName":"Oak Hills Elementary","IsActive":true},{"SchoolId":22,"IntDistrictId":5,"SchoolName":"Emblem","IsActive":true},{"SchoolId":23,"IntDistrictId":3,"SchoolName":"Wiley Elementary","IsActive":true},{"SchoolId":24,"IntDistrictId":3,"SchoolName":"Stevenson Ranch Elementary","IsActive":true},{"SchoolId":25,"IntDistrictId":3,"SchoolName":"Peachland Elementary","IsActive":true},{"SchoolId":26,"IntDistrictId":3,"SchoolName":"Pico Canyon Elementary","IsActive":true},{"SchoolId":27,"IntDistrictId":3,"SchoolName":"Newhall Elementary","IsActive":true},{"SchoolId":28,"IntDistrictId":3,"SchoolName":"Meadows","IsActive":true},{"SchoolId":29,"IntDistrictId":3,"SchoolName":"Valencia Valley","IsActive":true},{"SchoolId":30,"IntDistrictId":4,"SchoolName":"Canyon Springs","IsActive":true},{"SchoolId":31,"IntDistrictId":4,"SchoolName":"Fair Oaks","IsActive":true},{"SchoolId":32,"IntDistrictId":4,"SchoolName":"Leona Cox","IsActive":true},{"SchoolId":33,"IntDistrictId":4,"SchoolName":"Mint Canyon","IsActive":true},{"SchoolId":34,"IntDistrictId":4,"SchoolName":"Mitchell Elem","IsActive":true},{"SchoolId":35,"IntDistrictId":4,"SchoolName":"Pinetree","IsActive":true},{"SchoolId":36,"IntDistrictId":4,"SchoolName":"Sulphur Springs","IsActive":true},{"SchoolId":37,"IntDistrictId":4,"SchoolName":"Valley View","IsActive":true},{"SchoolId":38,"IntDistrictId":5,"SchoolName":"Bridgeport","IsActive":true},{"SchoolId":40,"IntDistrictId":5,"SchoolName":"Cedarcreek","IsActive":true},{"SchoolId":41,"IntDistrictId":5,"SchoolName":"Foster","IsActive":true},{"SchoolId":42,"IntDistrictId":5,"SchoolName":"Helmers","IsActive":true},{"SchoolId":43,"IntDistrictId":5,"SchoolName":"Highlands","IsActive":true},{"SchoolId":44,"IntDistrictId":5,"SchoolName":"Rio Vista","IsActive":true},{"SchoolId":45,"IntDistrictId":5,"SchoolName":"Mountainview","IsActive":true},{"SchoolId":46,"IntDistrictId":5,"SchoolName":"Rosedell","IsActive":true},{"SchoolId":47,"IntDistrictId":5,"SchoolName":"Santa Clarita","IsActive":true},{"SchoolId":48,"IntDistrictId":5,"SchoolName":"Skyblue Mesa","IsActive":true},{"SchoolId":49,"IntDistrictId":5,"SchoolName":"Plum Canyon","IsActive":true},{"SchoolId":50,"IntDistrictId":5,"SchoolName":"NorthPark","IsActive":true},{"SchoolId":51,"IntDistrictId":2,"SchoolName":"Castaic Elem","IsActive":true},{"SchoolId":52,"IntDistrictId":2,"SchoolName":"Castaic Middle","IsActive":true},{"SchoolId":53,"IntDistrictId":2,"SchoolName":"Live Oak","IsActive":true},{"SchoolId":59,"IntDistrictId":3,"SchoolName":"McGrath Elementary","IsActive":true},{"SchoolId":60,"IntDistrictId":2,"SchoolName":"North Lake Hills","IsActive":true},{"SchoolId":61,"IntDistrictId":5,"SchoolName":"Tesoro Del Valle","IsActive":true},{"SchoolId":62,"IntDistrictId":3,"SchoolName":"Special Ed","IsActive":true},{"SchoolId":63,"IntDistrictId":4,"SchoolName":"Golden Oak","IsActive":true},{"SchoolId":64,"IntDistrictId":5,"SchoolName":"West Creek","IsActive":true},{"SchoolId":66,"IntDistrictId":3,"SchoolName":"Adults","IsActive":true},{"SchoolId":67,"IntDistrictId":1,"SchoolName":"Adults","IsActive":true},{"SchoolId":68,"IntDistrictId":2,"SchoolName":"Adults","IsActive":true},{"SchoolId":69,"IntDistrictId":4,"SchoolName":"Adults","IsActive":true},{"SchoolId":70,"IntDistrictId":5,"SchoolName":"Adults","IsActive":true}] 
- </msg>
-<msg timestamp="20221118 14:22:05.273" level="INFO">C:\Users\SatishKumar\PycharmProjects\API_Automation\venv\lib\site-packages\urllib3\connectionpool.py:1045: InsecureRequestWarning: Unverified HTTPS request is being made to host 'alpha4-api.payschools.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
-  warnings.warn(</msg>
-<msg timestamp="20221118 14:22:05.273" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20221118 14:22:03.753" endtime="20221118 14:22:05.273"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>${response.content}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20221118 14:22:05.273" level="INFO">[{"SchoolId":20,"IntDistrictId":3,"SchoolName":"Old Orchard Elementary","IsActive":true},{"SchoolId":21,"IntDistrictId":3,"SchoolName":"Oak Hills Elementary","IsActive":true},{"SchoolId":22,"IntDistrictId":5,"SchoolName":"Emblem","IsActive":true},{"SchoolId":23,"IntDistrictId":3,"SchoolName":"Wiley Elementary","IsActive":true},{"SchoolId":24,"IntDistrictId":3,"SchoolName":"Stevenson Ranch Elementary","IsActive":true},{"SchoolId":25,"IntDistrictId":3,"SchoolName":"Peachland Elementary","IsActive":true},{"SchoolId":26,"IntDistrictId":3,"SchoolName":"Pico Canyon Elementary","IsActive":true},{"SchoolId":27,"IntDistrictId":3,"SchoolName":"Newhall Elementary","IsActive":true},{"SchoolId":28,"IntDistrictId":3,"SchoolName":"Meadows","IsActive":true},{"SchoolId":29,"IntDistrictId":3,"SchoolName":"Valencia Valley","IsActive":true},{"SchoolId":30,"IntDistrictId":4,"SchoolName":"Canyon Springs","IsActive":true},{"SchoolId":31,"IntDistrictId":4,"SchoolName":"Fair Oaks","IsActive":true},{"SchoolId":32,"IntDistrictId":4,"SchoolName":"Leona Cox","IsActive":true},{"SchoolId":33,"IntDistrictId":4,"SchoolName":"Mint Canyon","IsActive":true},{"SchoolId":34,"IntDistrictId":4,"SchoolName":"Mitchell Elem","IsActive":true},{"SchoolId":35,"IntDistrictId":4,"SchoolName":"Pinetree","IsActive":true},{"SchoolId":36,"IntDistrictId":4,"SchoolName":"Sulphur Springs","IsActive":true},{"SchoolId":37,"IntDistrictId":4,"SchoolName":"Valley View","IsActive":true},{"SchoolId":38,"IntDistrictId":5,"SchoolName":"Bridgeport","IsActive":true},{"SchoolId":40,"IntDistrictId":5,"SchoolName":"Cedarcreek","IsActive":true},{"SchoolId":41,"IntDistrictId":5,"SchoolName":"Foster","IsActive":true},{"SchoolId":42,"IntDistrictId":5,"SchoolName":"Helmers","IsActive":true},{"SchoolId":43,"IntDistrictId":5,"SchoolName":"Highlands","IsActive":true},{"SchoolId":44,"IntDistrictId":5,"SchoolName":"Rio Vista","IsActive":true},{"SchoolId":45,"IntDistrictId":5,"SchoolName":"Mountainview","IsActive":true},{"SchoolId":46,"IntDistrictId":5,"SchoolName":"Rosedell","IsActive":true},{"SchoolId":47,"IntDistrictId":5,"SchoolName":"Santa Clarita","IsActive":true},{"SchoolId":48,"IntDistrictId":5,"SchoolName":"Skyblue Mesa","IsActive":true},{"SchoolId":49,"IntDistrictId":5,"SchoolName":"Plum Canyon","IsActive":true},{"SchoolId":50,"IntDistrictId":5,"SchoolName":"NorthPark","IsActive":true},{"SchoolId":51,"IntDistrictId":2,"SchoolName":"Castaic Elem","IsActive":true},{"SchoolId":52,"IntDistrictId":2,"SchoolName":"Castaic Middle","IsActive":true},{"SchoolId":53,"IntDistrictId":2,"SchoolName":"Live Oak","IsActive":true},{"SchoolId":59,"IntDistrictId":3,"SchoolName":"McGrath Elementary","IsActive":true},{"SchoolId":60,"IntDistrictId":2,"SchoolName":"North Lake Hills","IsActive":true},{"SchoolId":61,"IntDistrictId":5,"SchoolName":"Tesoro Del Valle","IsActive":true},{"SchoolId":62,"IntDistrictId":3,"SchoolName":"Special Ed","IsActive":true},{"SchoolId":63,"IntDistrictId":4,"SchoolName":"Golden Oak","IsActive":true},{"SchoolId":64,"IntDistrictId":5,"SchoolName":"West Creek","IsActive":true},{"SchoolId":66,"IntDistrictId":3,"SchoolName":"Adults","IsActive":true},{"SchoolId":67,"IntDistrictId":1,"SchoolName":"Adults","IsActive":true},{"SchoolId":68,"IntDistrictId":2,"SchoolName":"Adults","IsActive":true},{"SchoolId":69,"IntDistrictId":4,"SchoolName":"Adults","IsActive":true},{"SchoolId":70,"IntDistrictId":5,"SchoolName":"Adults","IsActive":true}]</msg>
-<status status="PASS" starttime="20221118 14:22:05.273" endtime="20221118 14:22:05.273"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>${response.status_code}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20221118 14:22:05.273" level="INFO">200</msg>
-<status status="PASS" starttime="20221118 14:22:05.273" endtime="20221118 14:22:05.273"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>${response.headers}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20221118 14:22:05.273" level="INFO">{'Date': 'Fri, 18 Nov 2022 08:52:05 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'RequestId': 'c90070fe-bd44-4c3e-92b8-04b1c4db2555', 'X-Powered-By': 'ASP.NET', 'CF-Cache-Status': 'DYNAMIC', 'Server': 'cloudflare', 'CF-RAY': '76bf77c9bc12f419-BOM', 'Content-Encoding': 'gzip'}</msg>
-<status status="PASS" starttime="20221118 14:22:05.273" endtime="20221118 14:22:05.273"/>
-</kw>
-<status status="PASS" starttime="20221118 14:22:03.737" endtime="20221118 14:22:05.273"/>
-</test>
-<test id="s1-t6" name="Get details about one particular School" line="59">
-<kw name="Create Session" library="RequestsLibrary">
-<arg>mysession</arg>
-<arg>${base_url}</arg>
-<doc>Create Session: create a HTTP session to a server</doc>
-<msg timestamp="20221118 14:22:05.273" level="INFO">Creating Session using : alias=mysession, url=https://alpha4-api.payschools.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<status status="PASS" starttime="20221118 14:22:05.273" endtime="20221118 14:22:05.273"/>
-</kw>
-<kw name="Create Dictionary" library="BuiltIn">
-<var>${headers}</var>
-<arg>Content-Type=application/json</arg>
-<arg>Authorization=${token}</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20221118 14:22:05.288" level="INFO">${headers} = {'Content-Type': 'application/json', 'Authorization': 'Token c71fbe779ffd4e8ca4125f460e590f81nOPI659mzU143IIbj0Yit'}</msg>
-<status status="PASS" starttime="20221118 14:22:05.273" endtime="20221118 14:22:05.288"/>
-</kw>
-<kw name="GET On Session" library="RequestsLibrary">
-<var>${response}</var>
-<arg>mysession</arg>
-<arg>/v2/public/school/69</arg>
-<arg>headers=${headers}</arg>
-<doc>Sends a GET request on a previously created HTTP Session.</doc>
-<msg timestamp="20221118 14:22:06.562" level="INFO">GET Request : url=https://alpha4-api.payschools.com/v2/public/school/69 
- path_url=/v2/public/school/69 
- headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Authorization': 'Token c71fbe779ffd4e8ca4125f460e590f81nOPI659mzU143IIbj0Yit'} 
- body=None 
- </msg>
-<msg timestamp="20221118 14:22:06.562" level="INFO">GET Response : url=https://alpha4-api.payschools.com/v2/public/school/69 
- status=200, reason=OK 
- headers={'Date': 'Fri, 18 Nov 2022 08:52:07 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'RequestId': 'f8f1d4ac-b9b1-45a9-8e47-822612851d33', 'X-Powered-By': 'ASP.NET', 'CF-Cache-Status': 'DYNAMIC', 'Server': 'cloudflare', 'CF-RAY': '76bf77d35d7bf35f-BOM', 'Content-Encoding': 'gzip'} 
- body={"SchoolId":69,"IntDistrictId":4,"SchoolName":"Adults","IsActive":true} 
- </msg>
-<msg timestamp="20221118 14:22:06.562" level="INFO">C:\Users\SatishKumar\PycharmProjects\API_Automation\venv\lib\site-packages\urllib3\connectionpool.py:1045: InsecureRequestWarning: Unverified HTTPS request is being made to host 'alpha4-api.payschools.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
-  warnings.warn(</msg>
-<msg timestamp="20221118 14:22:06.562" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20221118 14:22:05.288" endtime="20221118 14:22:06.562"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>${response.content}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20221118 14:22:06.562" level="INFO">{"SchoolId":69,"IntDistrictId":4,"SchoolName":"Adults","IsActive":true}</msg>
-<status status="PASS" starttime="20221118 14:22:06.562" endtime="20221118 14:22:06.562"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>${response.status_code}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20221118 14:22:06.562" level="INFO">200</msg>
-<status status="PASS" starttime="20221118 14:22:06.562" endtime="20221118 14:22:06.562"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>${response.headers}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20221118 14:22:06.562" level="INFO">{'Date': 'Fri, 18 Nov 2022 08:52:07 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'RequestId': 'f8f1d4ac-b9b1-45a9-8e47-822612851d33', 'X-Powered-By': 'ASP.NET', 'CF-Cache-Status': 'DYNAMIC', 'Server': 'cloudflare', 'CF-RAY': '76bf77d35d7bf35f-BOM', 'Content-Encoding': 'gzip'}</msg>
-<status status="PASS" starttime="20221118 14:22:06.562" endtime="20221118 14:22:06.562"/>
-</kw>
-<status status="PASS" starttime="20221118 14:22:05.273" endtime="20221118 14:22:06.562"/>
-</test>
-<test id="s1-t7" name="Get Schools based on particular district by status as False" line="67">
-<kw name="Create Session" library="RequestsLibrary">
-<arg>mysession</arg>
-<arg>${base_url}</arg>
-<doc>Create Session: create a HTTP session to a server</doc>
-<msg timestamp="20221118 14:22:06.562" level="INFO">Creating Session using : alias=mysession, url=https://alpha4-api.payschools.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<status status="PASS" starttime="20221118 14:22:06.562" endtime="20221118 14:22:06.562"/>
-</kw>
-<kw name="Create Dictionary" library="BuiltIn">
-<var>${headers}</var>
-<arg>Content-Type=application/json</arg>
-<arg>Authorization=${token}</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20221118 14:22:06.562" level="INFO">${headers} = {'Content-Type': 'application/json', 'Authorization': 'Token c71fbe779ffd4e8ca4125f460e590f81nOPI659mzU143IIbj0Yit'}</msg>
-<status status="PASS" starttime="20221118 14:22:06.562" endtime="20221118 14:22:06.562"/>
-</kw>
-<kw name="GET On Session" library="RequestsLibrary">
-<var>${response}</var>
-<arg>mysession</arg>
-<arg>/v2/public/school/District/2/false</arg>
-<arg>headers=${headers}</arg>
-<doc>Sends a GET request on a previously created HTTP Session.</doc>
-<msg timestamp="20221118 14:22:08.037" level="INFO">GET Request : url=https://alpha4-api.payschools.com/v2/public/school/District/2/false 
- path_url=/v2/public/school/District/2/false 
- headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Authorization': 'Token c71fbe779ffd4e8ca4125f460e590f81nOPI659mzU143IIbj0Yit'} 
- body=None 
- </msg>
-<msg timestamp="20221118 14:22:08.037" level="INFO">GET Response : url=https://alpha4-api.payschools.com/v2/public/school/District/2/false 
- status=501, reason=Not Implemented 
- headers={'Date': 'Fri, 18 Nov 2022 08:52:08 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'RequestId': 'd9ecba9a-a7bb-4ab4-b7f0-adb6330f50b3', 'X-Powered-By': 'ASP.NET', 'CF-Cache-Status': 'DYNAMIC', 'Server': 'cloudflare', 'CF-RAY': '76bf77db6c7cf2e6-BOM'} 
- body=[{"UserMessage":"Not Implemented","InternalMessage":"Url /v2/public/school/District/2/false not found","Code":"","PropertyName":"","LogId":""}] 
- </msg>
-<msg timestamp="20221118 14:22:08.037" level="INFO">C:\Users\SatishKumar\PycharmProjects\API_Automation\venv\lib\site-packages\urllib3\connectionpool.py:1045: InsecureRequestWarning: Unverified HTTPS request is being made to host 'alpha4-api.payschools.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
-  warnings.warn(</msg>
-<msg timestamp="20221118 14:22:08.037" level="FAIL">HTTPError: 501 Server Error: Not Implemented for url: https://alpha4-api.payschools.com/v2/public/school/District/2/false</msg>
-<status status="FAIL" starttime="20221118 14:22:06.562" endtime="20221118 14:22:08.037"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>${response.content}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" starttime="20221118 14:22:08.037" endtime="20221118 14:22:08.037"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>${response.status_code}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" starttime="20221118 14:22:08.037" endtime="20221118 14:22:08.037"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>${response.headers}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" starttime="20221118 14:22:08.037" endtime="20221118 14:22:08.037"/>
-</kw>
-<status status="FAIL" starttime="20221118 14:22:06.562" endtime="20221118 14:22:08.037">HTTPError: 501 Server Error: Not Implemented for url: https://alpha4-api.payschools.com/v2/public/school/District/2/false</status>
-</test>
-<test id="s1-t8" name="Get Permission details" line="75">
-<kw name="Create Session" library="RequestsLibrary">
-<arg>mysession</arg>
-<arg>${base_url}</arg>
-<doc>Create Session: create a HTTP session to a server</doc>
-<msg timestamp="20221118 14:22:08.037" level="INFO">Creating Session using : alias=mysession, url=https://alpha4-api.payschools.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<status status="PASS" starttime="20221118 14:22:08.037" endtime="20221118 14:22:08.037"/>
-</kw>
-<kw name="Create Dictionary" library="BuiltIn">
-<var>${headers}</var>
-<arg>Content-Type=application/json</arg>
-<arg>Authorization=${token}</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20221118 14:22:08.037" level="INFO">${headers} = {'Content-Type': 'application/json', 'Authorization': 'Token c71fbe779ffd4e8ca4125f460e590f81nOPI659mzU143IIbj0Yit'}</msg>
-<status status="PASS" starttime="20221118 14:22:08.037" endtime="20221118 14:22:08.037"/>
-</kw>
-<kw name="GET On Session" library="RequestsLibrary">
-<var>${response}</var>
-<arg>mysession</arg>
-<arg>/v2/public/Permission/Fee</arg>
-<arg>headers=${headers}</arg>
-<doc>Sends a GET request on a previously created HTTP Session.</doc>
-<msg timestamp="20221118 14:22:09.472" level="INFO">GET Request : url=https://alpha4-api.payschools.com/v2/public/Permission/Fee 
- path_url=/v2/public/Permission/Fee 
- headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Authorization': 'Token c71fbe779ffd4e8ca4125f460e590f81nOPI659mzU143IIbj0Yit'} 
- body=None 
- </msg>
-<msg timestamp="20221118 14:22:09.472" level="INFO">GET Response : url=https://alpha4-api.payschools.com/v2/public/Permission/Fee 
- status=200, reason=OK 
- headers={'Date': 'Fri, 18 Nov 2022 08:52:10 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'RequestId': 'e13cdd36-08ea-4d22-9e1b-602d5fe8b6f3', 'X-Powered-By': 'ASP.NET', 'CF-Cache-Status': 'DYNAMIC', 'Server': 'cloudflare', 'CF-RAY': '76bf77e48b503194-BOM', 'Content-Encoding': 'gzip'} 
- body={"Permissions":{"PFI_FeeCategories":true,"PFI_FeeSessions":true,"PFI_ManageFeeTypes":true,"PFI_GLAccounts":true}} 
- </msg>
-<msg timestamp="20221118 14:22:09.472" level="INFO">C:\Users\SatishKumar\PycharmProjects\API_Automation\venv\lib\site-packages\urllib3\connectionpool.py:1045: InsecureRequestWarning: Unverified HTTPS request is being made to host 'alpha4-api.payschools.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
-  warnings.warn(</msg>
-<msg timestamp="20221118 14:22:09.472" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20221118 14:22:08.037" endtime="20221118 14:22:09.472"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>${response.content}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20221118 14:22:09.472" level="INFO">{"Permissions":{"PFI_FeeCategories":true,"PFI_FeeSessions":true,"PFI_ManageFeeTypes":true,"PFI_GLAccounts":true}}</msg>
-<status status="PASS" starttime="20221118 14:22:09.472" endtime="20221118 14:22:09.472"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>${response.status_code}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20221118 14:22:09.472" level="INFO">200</msg>
-<status status="PASS" starttime="20221118 14:22:09.472" endtime="20221118 14:22:09.472"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>${response.headers}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20221118 14:22:09.472" level="INFO">{'Date': 'Fri, 18 Nov 2022 08:52:10 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'RequestId': 'e13cdd36-08ea-4d22-9e1b-602d5fe8b6f3', 'X-Powered-By': 'ASP.NET', 'CF-Cache-Status': 'DYNAMIC', 'Server': 'cloudflare', 'CF-RAY': '76bf77e48b503194-BOM', 'Content-Encoding': 'gzip'}</msg>
-<status status="PASS" starttime="20221118 14:22:09.472" endtime="20221118 14:22:09.472"/>
-</kw>
-<status status="PASS" starttime="20221118 14:22:08.037" endtime="20221118 14:22:09.472"/>
-</test>
-<test id="s1-t9" name="Delete Token" line="83">
-<kw name="Create Session" library="RequestsLibrary">
-<arg>mysession</arg>
-<arg>${base_url}</arg>
-<doc>Create Session: create a HTTP session to a server</doc>
-<msg timestamp="20221118 14:22:09.472" level="INFO">Creating Session using : alias=mysession, url=https://alpha4-api.payschools.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<status status="PASS" starttime="20221118 14:22:09.472" endtime="20221118 14:22:09.472"/>
-</kw>
-<kw name="Create Dictionary" library="BuiltIn">
-<var>${headers}</var>
-<arg>Content-Type=application/json</arg>
-<arg>Authorization=${token}</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20221118 14:22:09.472" level="INFO">${headers} = {'Content-Type': 'application/json', 'Authorization': 'Token c71fbe779ffd4e8ca4125f460e590f81nOPI659mzU143IIbj0Yit'}</msg>
-<status status="PASS" starttime="20221118 14:22:09.472" endtime="20221118 14:22:09.472"/>
-</kw>
-<kw name="DELETE On Session" library="RequestsLibrary">
-<var>${response}</var>
-<arg>mysession</arg>
-<arg>/v2/public/user</arg>
-<arg>headers=${headers}</arg>
-<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
-<msg timestamp="20221118 14:22:10.090" level="INFO">DELETE Request : url=https://alpha4-api.payschools.com/v2/public/user 
- path_url=/v2/public/user 
- headers={'User-Agent': 'python-requests/2.28.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Authorization': 'Token c71fbe779ffd4e8ca4125f460e590f81nOPI659mzU143IIbj0Yit', 'Content-Length': '0'} 
- body=None 
- </msg>
-<msg timestamp="20221118 14:22:10.090" level="INFO">DELETE Response : url=https://alpha4-api.payschools.com/v2/public/user 
- status=500, reason=Internal Server Error 
- headers={'Date': 'Fri, 18 Nov 2022 08:52:10 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'RequestId': '53837779-4dd0-40d8-88c9-9940c2f812b1', 'X-Powered-By': 'ASP.NET', 'CF-Cache-Status': 'DYNAMIC', 'Server': 'cloudflare', 'CF-RAY': '76bf77ed89cff399-BOM'} 
- body=[{"UserMessage":"Internal Server Error.  Issue has been logged and technical support notified","InternalMessage":"","Code":"","PropertyName":"","LogId":"0a805b84-1ade-49e5-8b30-5b3a75eb28b7"}] 
- </msg>
-<msg timestamp="20221118 14:22:10.090" level="INFO">C:\Users\SatishKumar\PycharmProjects\API_Automation\venv\lib\site-packages\urllib3\connectionpool.py:1045: InsecureRequestWarning: Unverified HTTPS request is being made to host 'alpha4-api.payschools.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
-  warnings.warn(</msg>
-<msg timestamp="20221118 14:22:10.090" level="FAIL">HTTPError: 500 Server Error: Internal Server Error for url: https://alpha4-api.payschools.com/v2/public/user</msg>
-<status status="FAIL" starttime="20221118 14:22:09.472" endtime="20221118 14:22:10.090"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>${response.content}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" starttime="20221118 14:22:10.090" endtime="20221118 14:22:10.090"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>${response.status_code}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" starttime="20221118 14:22:10.090" endtime="20221118 14:22:10.090"/>
-</kw>
-<kw name="Log" library="BuiltIn">
-<arg>${response.headers}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="NOT RUN" starttime="20221118 14:22:10.090" endtime="20221118 14:22:10.090"/>
-</kw>
-<status status="FAIL" starttime="20221118 14:22:09.472" endtime="20221118 14:22:10.090">HTTPError: 500 Server Error: Internal Server Error for url: https://alpha4-api.payschools.com/v2/public/user</status>
-</test>
-<status status="FAIL" starttime="20221118 14:21:51.960" endtime="20221118 14:22:10.090"/>
+<status status="PASS" starttime="20221128 22:45:56.610" endtime="20221128 22:46:00.301"/>
 </suite>
 <statistics>
 <total>
-<stat pass="6" fail="3" skip="0">All Tests</stat>
+<stat pass="2" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat pass="6" fail="3" skip="0" id="s1" name="TC9 BearerToken">TC9 BearerToken</stat>
+<stat pass="2" fail="0" skip="0" id="s1" name="TC2 Fees">TC2 Fees</stat>
 </suite>
 </statistics>
 <errors>
-<msg timestamp="20221118 14:21:52.307" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
 </errors>
 </robot>
